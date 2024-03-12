@@ -1,0 +1,4 @@
+Dimension,Code,Title,ParentDimension,ParentCode,ParentTitle
+GHO,RS_196,Estimated number of road traffic deaths,,,
+GHO,RS_198,Estimated road traffic death rate (per 100 000 population),,,
+GHO,RS_246,Distribution of road traffic deaths by type of road user (%),,,

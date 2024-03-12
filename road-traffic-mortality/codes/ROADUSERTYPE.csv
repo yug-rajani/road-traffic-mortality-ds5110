@@ -1,0 +1,6 @@
+Dimension,Code,Title,ParentDimension,ParentCode,ParentTitle
+ROADUSERTYPE,RS-DDC-2OR3WHEELS,Drivers/passengers of motorized 2- or 3-wheelers,,,
+ROADUSERTYPE,RS-DDC-4WHEELS,Drivers/passengers of 4-wheeled vehicles,,,
+ROADUSERTYPE,RS-DDC-CYCLISTS,Cyclists,,,
+ROADUSERTYPE,RS-DDC-OTHER,Other/unspecified road users,,,
+ROADUSERTYPE,RS-DDC-PEDESTRIANS,Pedestrians,,,
