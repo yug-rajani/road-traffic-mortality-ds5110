@@ -1,0 +1,146 @@
+---
+title: "Road Traffic Mortality"
+output: pdf_document
+date: "`r Sys.Date()`"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(dplyr)
+```
+
+# Tidying Data
+
+### Hephzibah Saidu & Nikki Cohen
+
+## Reading in Data
+
+```{r reading in files, message=FALSE}
+# reading in 196
+RS_196 <- read_csv("RS_196.csv")
+
+# selecting columns that contain data
+RS_196 <- RS_196 |>
+  select(Id:DisaggregatingDimension1ValueCode, Value:High, Date:TimeDimensionEnd)
+
+# reading in 246
+RS_246 <- read_csv("RS_246.csv")
+
+# selecting columns that contain data
+RS_246 <- RS_246 |>
+  select(Id:DisaggregatingDimension1ValueCode, Value, NumericValue, Date:TimeDimensionEnd)
+
+# reading in 198
+RS_198 <- read_csv("RS_198.csv")
+
+# selecting columns that contain data
+RS_198 <- RS_198 |>
+  select(Id:DisaggregatingDimension1ValueCode, Value:High, Date:TimeDimensionEnd)
+```
+
+## Preview of the Three Datasets
+
+# RS_196: Estimated Number of Road Traffic Deaths
+
+```{r preview of data, message=FALSE}
+head(RS_196)
+```
+
+# RS_198: Estimated Road Traffic Death Rate (per 100,000 Population)
+
+```{r preview of data2, message=FALSE}
+head(RS_198)
+```
+
+# RS_246: Distribution of Road Traffic Deaths by Road User
+
+```{r preview of data3, message=FALSE}
+head(RS_246)
+```
+
+## Tidying RS_246
+
+```{r RS_246 tidying, message=FALSE}
+RS_246 <- RS_246 |>
+  # selecting relevant columns
+  select(
+    Id, SpatialDimensionValueCode, TimeDimensionValue, DisaggregatingDimension1ValueCode,
+    Value
+  ) |>
+  # renaming columns to meaningful names
+  rename(
+    Country = SpatialDimensionValueCode, Year = TimeDimensionValue,
+    `Vehicle Type` = DisaggregatingDimension1ValueCode
+  )
+
+# omitting any NA values
+RS_246 <- na.omit(RS_246)
+
+# Preview of RS_246
+head(RS_246)
+```
+
+## Tidying RS_198
+
+```{r RS_198 tidying, message=FALSE}
+RS_198 <- RS_198 |>
+  # selecting relevant columns
+  select(Id, SpatialDimensionValueCode, TimeDim, DisaggregatingDimension1ValueCode, Value) |>
+  # renaming columns to meaningful names
+  rename(
+    Country = SpatialDimensionValueCode, Year = TimeDim, Sex = DisaggregatingDimension1ValueCode,
+    Rate = Value
+  )
+
+# omitting NA values
+RS_198 <- na.omit(RS_198)
+
+RS_198 <- RS_198 |>
+  # extracting the rate from the value
+  mutate(Rate = substring(Rate, 1, 4)) |>
+  # renaming values in Sex column for more meaningful content
+  mutate(Sex = case_when(
+    Sex == "FMLE" ~ "Female",
+    Sex == "MLE" ~ "Male",
+    Sex == "BTSX" ~ "Both Sexes"
+  ))
+
+# preview of RS_198
+head(RS_198)
+```
+
+## Tidying RS_196
+
+```{r RS_196 tidying, message=FALSE}
+RS_196 <- RS_196 |>
+  # selecting relevant columns
+  select(Id, SpatialDimensionValueCode, TimeDim, DisaggregatingDimension1ValueCode, Value) |>
+  # renaming columns to meaningful names
+  rename(
+    Country = SpatialDimensionValueCode, Year = TimeDim, Sex = DisaggregatingDimension1ValueCode,
+    Rate = Value
+  )
+
+# omitting NA values
+RS_196 <- na.omit(RS_196)
+
+RS_196 <- RS_196 |>
+  # extracting the rate from the value
+  mutate(Rate = substring(Rate, 1, 4)) |>
+  # renaming values in Sex column for more meaningful content
+  mutate(Sex = case_when(
+    Sex == "FMLE" ~ "Female",
+    Sex == "MLE" ~ "Male",
+    Sex == "BTSX" ~ "Both Sexes"
+  ))
+
+# preview of RS_198
+head(RS_196)
+```
+
+```{r writing out tidied data to CSV files, message=FALSE}
+write_csv(RS_246, "tidied_246.csv")
+write_csv(RS_198, "tidied_198.csv")
+write_csv(RS_196, "tidied_196.csv")
+```
