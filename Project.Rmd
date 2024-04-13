@@ -1,5 +1,5 @@
 ---
-title: "Project"
+title: "Road Traffic Mortality"
 output: pdf_document
 date: "`r Sys.Date()`"
 ---
@@ -18,25 +18,37 @@ library(dplyr)
 
 ```{r reading in files, message=FALSE}
 # reading in 196
-RS_196 <- read_csv("RS_196.csv")
+rs_196 <- read_csv("RS_196.csv")
 
 # selecting columns that contain data
-RS_196 <- RS_196 |>
-  select(Id:DisaggregatingDimension1ValueCode, Value:High, Date:TimeDimensionEnd)
+rs_196 <- rs_196 |>
+  select(
+    Id:DisaggregatingDimension1ValueCode,
+    Value:High,
+    Date:TimeDimensionEnd
+  )
 
 # reading in 246
-RS_246 <- read_csv("RS_246.csv")
+rs_246 <- read_csv("RS_246.csv")
 
 # selecting columns that contain data
-RS_246 <- RS_246 |>
-  select(Id:DisaggregatingDimension1ValueCode, Value, NumericValue, Date:TimeDimensionEnd)
+rs_246 <- rs_246 |>
+  select(
+    Id:DisaggregatingDimension1ValueCode,
+    Value,
+    NumericValue,
+    Date:TimeDimensionEnd
+  )
 
 # reading in 198
-RS_198 <- read_csv("RS_198.csv")
+rs_198 <- read_csv("RS_198.csv")
 
 # selecting columns that contain data
-RS_198 <- RS_198 |>
-  select(Id:DisaggregatingDimension1ValueCode, Value:High, Date:TimeDimensionEnd)
+rs_198 <- rs_198 |>
+  select(
+    Id:DisaggregatingDimension1ValueCode,
+    Value:High, Date:TimeDimensionEnd
+  )
 
 # reading in code files for tidying
 country <- read_csv("COUNTRY.csv")
@@ -51,19 +63,19 @@ roadtype <- read_csv("ROADUSERTYPE.csv")
 # RS_196: Estimated Number of Road Traffic Deaths
 
 ```{r preview of data, message=FALSE}
-head(RS_196)
+head(rs_196)
 ```
 
 # RS_198: Estimated Road Traffic Death Rate (per 100,000 Population)
 
 ```{r preview of data2, message=FALSE}
-head(RS_198)
+head(rs_198)
 ```
 
 # RS_246: Distribution of Road Traffic Deaths by Road User
 
 ```{r preview of data3, message=FALSE}
-head(RS_246)
+head(rs_246)
 ```
 
 ## Tidying RS_246
@@ -71,125 +83,135 @@ head(RS_246)
 ```{r RS_246 tidying, message=FALSE}
 # create a lookup table
 road <- subset(roadtype, select = c("Code", "Title"))
-nCountry <- subset(country, select = c("Code", "Title"))
+n_country <- subset(country, select = c("Code", "Title"))
 
-RS_246 <- RS_246 |>
-  #selecting relevant columns
-  select(Id, SpatialDimensionValueCode, TimeDim, DisaggregatingDimension1ValueCode,
-         NumericValue) |>
+rs_246 <- rs_246 |>
+  # selecting relevant columns
+  select(
+    Id, SpatialDimensionValueCode, TimeDim, DisaggregatingDimension1ValueCode,
+    NumericValue
+  ) |>
   # renaming columns to meaningful names
-  rename(Country = SpatialDimensionValueCode, Year = TimeDim, 
-         `Vehicle Type` = DisaggregatingDimension1ValueCode)
+  rename(
+    Country = SpatialDimensionValueCode, Year = TimeDim,
+    `Vehicle Type` = DisaggregatingDimension1ValueCode
+  )
 
 # omitting any NA values
-RS_246 <- na.omit(RS_246)
+rs_246 <- na.omit(rs_246)
 
-RS_246$`Vehicle Type` <- road$Title[match(RS_246$`Vehicle Type`, road$Code)]
-RS_246$Country <- nCountry$Title[match(RS_246$Country, nCountry$Code)]
+rs_246$`Vehicle Type` <- road$Title[match(rs_246$`Vehicle Type`, road$Code)]
+rs_246$Country <- n_country$Title[match(rs_246$Country, n_country$Code)]
 
 # Preview of RS_246
-head(RS_246)
+head(rs_246)
 ```
 
 ## Tidying RS_198
 
 ```{r RS_198 tidying, message=FALSE}
-nSex <- subset(sex, select = c("Code", "Title"))
-nRegion <- subset(region, select = c("Code", "Title"))
-nBank <- subset(worldbank, select = c("Code", "Title"))
+n_sex <- subset(sex, select = c("Code", "Title"))
+n_region <- subset(region, select = c("Code", "Title"))
+n_bank <- subset(worldbank, select = c("Code", "Title"))
 
-RS_198 <- RS_198 |>
+rs_198 <- rs_198 |>
   # selecting relevant columns
-  select(Id, SpatialDimension, SpatialDimensionValueCode, TimeDim, 
-         DisaggregatingDimension1ValueCode, NumericValue:High) |>
+  select(
+    Id, SpatialDimension, SpatialDimensionValueCode, TimeDim,
+    DisaggregatingDimension1ValueCode, NumericValue:High
+  ) |>
   # renaming columns to meaningful names
-  rename(`Geographic Code` = SpatialDimension, `Geographic Value` = SpatialDimensionValueCode, 
-         Year = TimeDim, Sex = DisaggregatingDimension1ValueCode, Rate = NumericValue)
+  rename(
+    `Geographic Code` = SpatialDimension,
+    `Geographic Value` = SpatialDimensionValueCode,
+    Year = TimeDim,
+    Sex = DisaggregatingDimension1ValueCode,
+    Rate = NumericValue
+  )
 
 # omitting NA values
-RS_198 <- na.omit(RS_198)
+rs_198 <- na.omit(rs_198)
 
 # lookup for SEX
-RS_198$Sex <- nSex$Title[match(RS_198$Sex, nSex$Code)]
+rs_198$Sex <- n_sex$Title[match(rs_198$Sex, n_sex$Code)]
 
 # lookup for COUNTRY
-RS_198$`Geographic Value`[RS_198$`Geographic Code` == "COUNTRY"] <- 
-  nCountry$Title[match(RS_198$`Geographic Value`[RS_198$`Geographic Code` == "COUNTRY"], nCountry$Code)]
+rs_198$`Geographic Value`[rs_198$`Geographic Code` == "COUNTRY"] <-
+  n_country$Title[match(
+    rs_198$`Geographic Value`[rs_198$`Geographic Code` == "COUNTRY"],
+    n_country$Code
+  )]
 
 # lookup for REGION
-RS_198$`Geographic Value`[RS_198$`Geographic Code` == "REGION"] <- 
-  nRegion$Title[match(RS_198$`Geographic Value`[RS_198$`Geographic Code` == "REGION"], nRegion$Code)]
+rs_198$`Geographic Value`[rs_198$`Geographic Code` == "REGION"] <-
+  n_region$Title[match(
+    rs_198$`Geographic Value`[rs_198$`Geographic Code` == "REGION"],
+    n_region$Code
+  )]
 
 # lookup for WORLDBANKINCOMEGROUP
-RS_198$`Geographic Value`[RS_198$`Geographic Code` == "WORLDBANKINCOMEGROUP"] <- 
-  nBank$Title[match(RS_198$`Geographic Value`[RS_198$`Geographic Code` == "WORLDBANKINCOMEGROUP"], 
-                    nBank$Code)]
+rs_198$`Geographic Value`[rs_198$`Geographic Code` == "WORLDBANKINCOMEGROUP"] <-
+  n_bank$Title[match(
+    rs_198$`Geographic Value`[
+      rs_198$`Geographic Code` == "WORLDBANKINCOMEGROUP"
+    ],
+    n_bank$Code
+  )]
 
 # preview of RS_198
-head(RS_198)
+head(rs_198)
 ```
 
 ## Tidying RS_196
 
 ```{r RS_196 tidying, message=FALSE}
-RS_196 <- RS_196 |>
+rs_196 <- rs_196 |>
   # selecting relevant columns
-  select(Id, SpatialDimension, SpatialDimensionValueCode, TimeDim, 
-         DisaggregatingDimension1ValueCode, NumericValue:High) |>
+  select(
+    Id, SpatialDimension, SpatialDimensionValueCode, TimeDim,
+    DisaggregatingDimension1ValueCode, NumericValue:High
+  ) |>
   # renaming columns to meaningful names
-  rename(`Geographic Code` = SpatialDimension, `Geographic Value` = SpatialDimensionValueCode, 
-         Year = TimeDim, Sex = DisaggregatingDimension1ValueCode, Rate = NumericValue)
+  rename(
+    `Geographic Code` = SpatialDimension,
+    `Geographic Value` = SpatialDimensionValueCode,
+    Year = TimeDim, Sex = DisaggregatingDimension1ValueCode,
+    Rate = NumericValue
+  )
 
 # omitting NA values
-RS_196 <- na.omit(RS_196)
+rs_196 <- na.omit(rs_196)
 
 # lookup for SEX
-RS_196$Sex <- nSex$Title[match(RS_196$Sex, nSex$Code)]
+rs_196$Sex <- n_sex$Title[match(rs_196$Sex, n_sex$Code)]
 
 # lookup for COUNTRY
-RS_196$`Geographic Value`[RS_196$`Geographic Code` == "COUNTRY"] <- 
-  nCountry$Title[match(RS_196$`Geographic Value`[RS_196$`Geographic Code` == "COUNTRY"], nCountry$Code)]
+rs_196$`Geographic Value`[rs_196$`Geographic Code` == "COUNTRY"] <-
+  n_country$Title[match(rs_196$`Geographic Value`[
+    rs_196$`Geographic Code` == "COUNTRY"
+  ], n_country$Code)]
 
 # lookup for REGION
-RS_196$`Geographic Value`[RS_196$`Geographic Code` == "REGION"] <- 
-  nRegion$Title[match(RS_196$`Geographic Value`[RS_196$`Geographic Code` == "REGION"], nRegion$Code)]
+rs_196$`Geographic Value`[rs_196$`Geographic Code` == "REGION"] <-
+  n_region$Title[match(rs_196$`Geographic Value`[
+    rs_196$`Geographic Code` == "REGION"
+  ], n_region$Code)]
 
 # lookup for WORLDBANKINCOMEGROUP
-RS_196$`Geographic Value`[RS_196$`Geographic Code` == "WORLDBANKINCOMEGROUP"] <- 
-  nBank$Title[match(RS_196$`Geographic Value`[RS_196$`Geographic Code` == "WORLDBANKINCOMEGROUP"], 
-                    nBank$Code)]
+rs_196$`Geographic Value`[rs_196$`Geographic Code` == "WORLDBANKINCOMEGROUP"] <-
+  n_bank$Title[match(
+    rs_196$`Geographic Value`[
+      rs_196$`Geographic Code` == "WORLDBANKINCOMEGROUP"
+    ],
+    n_bank$Code
+  )]
 
-# preview of RS_198
-head(RS_196)
+# preview of RS_196
+head(rs_196)
 ```
 
 ```{r writing out tidied data to CSV files, message=FALSE}
-write_csv(RS_246, "tidied_246.csv")
-write_csv(RS_198, "tidied_198.csv")
-write_csv(RS_196, "tidied_196.csv")
+write_csv(rs_246, "tidied_246.csv")
+write_csv(rs_198, "tidied_198.csv")
+write_csv(rs_196, "tidied_196.csv")
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
