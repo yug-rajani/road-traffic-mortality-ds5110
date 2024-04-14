@@ -1,0 +1,647 @@
+Id,Country,Year,Vehicle Type,NumericValue
+22240670,Albania,2016,Drivers/passengers of motorized 2- or 3-wheelers,11.9
+22240671,Andorra,2013,Drivers/passengers of motorized 2- or 3-wheelers,50
+22240672,Antigua and Barbuda,2016,Drivers/passengers of motorized 2- or 3-wheelers,0
+22240673,Argentina,2016,Drivers/passengers of motorized 2- or 3-wheelers,22.2
+22240674,Armenia,2016,Drivers/passengers of motorized 2- or 3-wheelers,1.5
+22240675,Australia,2016,Drivers/passengers of motorized 2- or 3-wheelers,19.3
+22240676,Austria,2016,Drivers/passengers of motorized 2- or 3-wheelers,22
+22240677,Azerbaijan,2016,Drivers/passengers of motorized 2- or 3-wheelers,0.9
+22240678,Bahamas,2013,Drivers/passengers of motorized 2- or 3-wheelers,17.3
+22240679,Bahrain,2013,Drivers/passengers of motorized 2- or 3-wheelers,9.1
+22240680,Barbados,2016,Drivers/passengers of motorized 2- or 3-wheelers,33.3
+22240681,Belgium,2016,Drivers/passengers of motorized 2- or 3-wheelers,14.4
+22240682,Belize,2016,Drivers/passengers of motorized 2- or 3-wheelers,19.8
+22240683,Benin,2016,Drivers/passengers of motorized 2- or 3-wheelers,56.5
+22240684,Bolivia (Plurinational State of),2016,Drivers/passengers of motorized 2- or 3-wheelers,19.7
+22240685,Botswana,2016,Drivers/passengers of motorized 2- or 3-wheelers,0
+22240686,Brazil,2016,Drivers/passengers of motorized 2- or 3-wheelers,31.4
+22240687,Bulgaria,2016,Drivers/passengers of motorized 2- or 3-wheelers,7.8
+22240688,Cambodia,2016,Drivers/passengers of motorized 2- or 3-wheelers,73.5
+22240689,Canada,2016,Drivers/passengers of motorized 2- or 3-wheelers,10.8
+22240690,Chile,2016,Drivers/passengers of motorized 2- or 3-wheelers,8.7
+22240691,Colombia,2016,Drivers/passengers of motorized 2- or 3-wheelers,52.5
+22240692,Comoros,2016,Drivers/passengers of motorized 2- or 3-wheelers,17.4
+22240693,Cook Islands,2016,Drivers/passengers of motorized 2- or 3-wheelers,80
+22240694,Costa Rica,2016,Drivers/passengers of motorized 2- or 3-wheelers,40
+22240695,Côte d'Ivoire,2016,Drivers/passengers of motorized 2- or 3-wheelers,35
+22240696,Croatia,2016,Drivers/passengers of motorized 2- or 3-wheelers,16
+22240697,Cuba,2016,Drivers/passengers of motorized 2- or 3-wheelers,15.6
+22240698,Cyprus,2016,Drivers/passengers of motorized 2- or 3-wheelers,21.7
+22240699,Czechia,2016,Drivers/passengers of motorized 2- or 3-wheelers,10.3
+22240700,Democratic Republic of the Congo,2016,Drivers/passengers of motorized 2- or 3-wheelers,11.7
+22240701,Denmark,2016,Drivers/passengers of motorized 2- or 3-wheelers,16.1
+22240702,Dominica,2016,Drivers/passengers of motorized 2- or 3-wheelers,0
+22240703,Dominican Republic,2016,Drivers/passengers of motorized 2- or 3-wheelers,67
+22240704,Ecuador,2016,Drivers/passengers of motorized 2- or 3-wheelers,19.1
+22240705,Egypt,2016,Drivers/passengers of motorized 2- or 3-wheelers,5.5
+22240706,El Salvador,2016,Drivers/passengers of motorized 2- or 3-wheelers,14.2
+22240707,Eritrea,2016,Drivers/passengers of motorized 2- or 3-wheelers,1.5
+22240708,Estonia,2016,Drivers/passengers of motorized 2- or 3-wheelers,1.4
+22240709,Eswatini,2016,Drivers/passengers of motorized 2- or 3-wheelers,0.5
+22240710,Finland,2016,Drivers/passengers of motorized 2- or 3-wheelers,8.7
+22240711,France,2016,Drivers/passengers of motorized 2- or 3-wheelers,21.1
+22240712,Georgia,2016,Drivers/passengers of motorized 2- or 3-wheelers,0.5
+22240713,Germany,2016,Drivers/passengers of motorized 2- or 3-wheelers,18.8
+22240714,Ghana,2016,Drivers/passengers of motorized 2- or 3-wheelers,17.9
+22240715,Greece,2016,Drivers/passengers of motorized 2- or 3-wheelers,32.4
+22240716,Guatemala,2016,Drivers/passengers of motorized 2- or 3-wheelers,32.7
+22240717,Guyana,2016,Drivers/passengers of motorized 2- or 3-wheelers,21.9
+22240718,Honduras,2016,Drivers/passengers of motorized 2- or 3-wheelers,24.3
+22240719,Hungary,2016,Drivers/passengers of motorized 2- or 3-wheelers,10.5
+22240720,Iceland,2016,Drivers/passengers of motorized 2- or 3-wheelers,11.1
+22240721,India,2016,Drivers/passengers of motorized 2- or 3-wheelers,39.6
+22240722,Indonesia,2016,Drivers/passengers of motorized 2- or 3-wheelers,73.6
+22240723,Iran (Islamic Republic of),2016,Drivers/passengers of motorized 2- or 3-wheelers,24.1
+22240724,Ireland,2016,Drivers/passengers of motorized 2- or 3-wheelers,11.7
+22240725,Israel,2016,Drivers/passengers of motorized 2- or 3-wheelers,12.2
+22240726,Italy,2016,Drivers/passengers of motorized 2- or 3-wheelers,25.6
+22240727,Jamaica,2016,Drivers/passengers of motorized 2- or 3-wheelers,28.8
+22240728,Japan,2016,Drivers/passengers of motorized 2- or 3-wheelers,17.2
+22240729,Jordan,2016,Drivers/passengers of motorized 2- or 3-wheelers,0
+22240730,Kazakhstan,2016,Drivers/passengers of motorized 2- or 3-wheelers,4.3
+22240731,Kenya,2016,Drivers/passengers of motorized 2- or 3-wheelers,24.2
+22240732,Kiribati,2016,Drivers/passengers of motorized 2- or 3-wheelers,20
+22240733,Kyrgyzstan,2016,Drivers/passengers of motorized 2- or 3-wheelers,2.1
+22240734,Latvia,2016,Drivers/passengers of motorized 2- or 3-wheelers,12
+22240735,Lebanon,2016,Drivers/passengers of motorized 2- or 3-wheelers,20.7
+22240736,Libya,2016,Drivers/passengers of motorized 2- or 3-wheelers,1.9
+22240737,Lithuania,2016,Drivers/passengers of motorized 2- or 3-wheelers,5.7
+22240738,Luxembourg,2016,Drivers/passengers of motorized 2- or 3-wheelers,9.4
+22240739,Malawi,2016,Drivers/passengers of motorized 2- or 3-wheelers,3.2
+22240740,Maldives,2016,Drivers/passengers of motorized 2- or 3-wheelers,75
+22240741,Mali,2016,Drivers/passengers of motorized 2- or 3-wheelers,42.3
+22240742,Malta,2016,Drivers/passengers of motorized 2- or 3-wheelers,40.9
+22240743,Marshall Islands,2013,Drivers/passengers of motorized 2- or 3-wheelers,66.7
+22240744,Mauritius,2016,Drivers/passengers of motorized 2- or 3-wheelers,45.8
+22240745,Mexico,2016,Drivers/passengers of motorized 2- or 3-wheelers,9.6
+22240746,Micronesia (Federated States of),2016,Drivers/passengers of motorized 2- or 3-wheelers,0
+22240747,Mongolia,2016,Drivers/passengers of motorized 2- or 3-wheelers,18.6
+22240748,Montenegro,2016,Drivers/passengers of motorized 2- or 3-wheelers,15.4
+22240749,Morocco,2016,Drivers/passengers of motorized 2- or 3-wheelers,28.7
+22240750,Myanmar,2016,Drivers/passengers of motorized 2- or 3-wheelers,64.8
+22240751,Netherlands,2016,Drivers/passengers of motorized 2- or 3-wheelers,21.4
+22240752,New Zealand,2016,Drivers/passengers of motorized 2- or 3-wheelers,15.9
+22240753,Nicaragua,2013,Drivers/passengers of motorized 2- or 3-wheelers,26
+22240754,Norway,2016,Drivers/passengers of motorized 2- or 3-wheelers,17
+22240755,Oman,2016,Drivers/passengers of motorized 2- or 3-wheelers,3.9
+22240756,Panama,2016,Drivers/passengers of motorized 2- or 3-wheelers,4.4
+22240757,Paraguay,2016,Drivers/passengers of motorized 2- or 3-wheelers,52.2
+22240758,Peru,2016,Drivers/passengers of motorized 2- or 3-wheelers,0.6
+22240759,Philippines,2016,Drivers/passengers of motorized 2- or 3-wheelers,4.7
+22240760,Poland,2016,Drivers/passengers of motorized 2- or 3-wheelers,11.2
+22240761,Portugal,2016,Drivers/passengers of motorized 2- or 3-wheelers,18.3
+22240762,Qatar,2016,Drivers/passengers of motorized 2- or 3-wheelers,2.2
+22240763,Republic of Korea,2016,Drivers/passengers of motorized 2- or 3-wheelers,20.5
+22240764,Republic of Moldova,2016,Drivers/passengers of motorized 2- or 3-wheelers,4.3
+22240765,Romania,2016,Drivers/passengers of motorized 2- or 3-wheelers,4.4
+22240766,Russian Federation,2016,Drivers/passengers of motorized 2- or 3-wheelers,5.9
+22240767,Saint Lucia,2016,Drivers/passengers of motorized 2- or 3-wheelers,20
+22240768,Samoa,2016,Drivers/passengers of motorized 2- or 3-wheelers,0
+22240769,Serbia,2016,Drivers/passengers of motorized 2- or 3-wheelers,8.7
+22240770,Seychelles,2016,Drivers/passengers of motorized 2- or 3-wheelers,20
+22240771,Singapore,2016,Drivers/passengers of motorized 2- or 3-wheelers,44
+22240772,Slovakia,2016,Drivers/passengers of motorized 2- or 3-wheelers,8.7
+22240773,Slovenia,2016,Drivers/passengers of motorized 2- or 3-wheelers,19.2
+22240774,South Africa,2016,Drivers/passengers of motorized 2- or 3-wheelers,0.3
+22240775,Spain,2016,Drivers/passengers of motorized 2- or 3-wheelers,21.9
+22240776,Sri Lanka,2016,Drivers/passengers of motorized 2- or 3-wheelers,50.8
+22240777,Suriname,2016,Drivers/passengers of motorized 2- or 3-wheelers,45.9
+22240778,Eswatini,2013,Drivers/passengers of motorized 2- or 3-wheelers,2
+22240779,Sweden,2016,Drivers/passengers of motorized 2- or 3-wheelers,16.3
+22240780,Switzerland,2016,Drivers/passengers of motorized 2- or 3-wheelers,22.7
+22240781,Syrian Arab Republic,2016,Drivers/passengers of motorized 2- or 3-wheelers,6.4
+22240782,Thailand,2016,Drivers/passengers of motorized 2- or 3-wheelers,74.4
+22240783,North Macedonia,2016,Drivers/passengers of motorized 2- or 3-wheelers,9.5
+22240784,Togo,2016,Drivers/passengers of motorized 2- or 3-wheelers,71.6
+22240785,Tonga,2016,Drivers/passengers of motorized 2- or 3-wheelers,0
+22240786,Trinidad and Tobago,2016,Drivers/passengers of motorized 2- or 3-wheelers,2.2
+22240787,Tunisia,2016,Drivers/passengers of motorized 2- or 3-wheelers,22.9
+22240788,Turkey,2016,Drivers/passengers of motorized 2- or 3-wheelers,14.9
+22240789,Uganda,2016,Drivers/passengers of motorized 2- or 3-wheelers,33.4
+22240790,Ukraine,2016,Drivers/passengers of motorized 2- or 3-wheelers,8.7
+22240791,United Arab Emirates,2016,Drivers/passengers of motorized 2- or 3-wheelers,5.5
+22240792,United Kingdom of Great Britain and Northern Ireland,2016,Drivers/passengers of motorized 2- or 3-wheelers,20.5
+22240793,United Republic of Tanzania,2016,Drivers/passengers of motorized 2- or 3-wheelers,22.7
+22240794,United States of America,2016,Drivers/passengers of motorized 2- or 3-wheelers,14.2
+22240795,Uruguay,2016,Drivers/passengers of motorized 2- or 3-wheelers,45.7
+22240796,"occupied Palestinian territory, including east Jerusalem",2016,Drivers/passengers of motorized 2- or 3-wheelers,2.5
+22240797,Zimbabwe,2016,Drivers/passengers of motorized 2- or 3-wheelers,10.2
+22240798,Albania,2016,Drivers/passengers of 4-wheeled vehicles,39.4
+22240799,Angola,2016,Drivers/passengers of 4-wheeled vehicles,59.5
+22240800,Antigua and Barbuda,2016,Drivers/passengers of 4-wheeled vehicles,62.5
+22240801,Argentina,2016,Drivers/passengers of 4-wheeled vehicles,47.2
+22240802,Armenia,2016,Drivers/passengers of 4-wheeled vehicles,59.6
+22240803,Australia,2016,Drivers/passengers of 4-wheeled vehicles,60.9
+22240804,Austria,2016,Drivers/passengers of 4-wheeled vehicles,43.8
+22240805,Azerbaijan,2016,Drivers/passengers of 4-wheeled vehicles,51.8
+22240806,Bahamas,2013,Drivers/passengers of 4-wheeled vehicles,57.7
+22240807,Bahrain,2013,Drivers/passengers of 4-wheeled vehicles,59.3
+22240808,Barbados,2016,Drivers/passengers of 4-wheeled vehicles,33.3
+22240809,Belarus,2016,Drivers/passengers of 4-wheeled vehicles,48.5
+22240810,Belgium,2016,Drivers/passengers of 4-wheeled vehicles,57.1
+22240811,Belize,2016,Drivers/passengers of 4-wheeled vehicles,18.8
+22240812,Benin,2016,Drivers/passengers of 4-wheeled vehicles,16.8
+22240813,Bolivia (Plurinational State of),2016,Drivers/passengers of 4-wheeled vehicles,60.8
+22240814,Botswana,2016,Drivers/passengers of 4-wheeled vehicles,63.1
+22240815,Brazil,2016,Drivers/passengers of 4-wheeled vehicles,23.2
+22240816,Bulgaria,2016,Drivers/passengers of 4-wheeled vehicles,63.8
+22240817,Cambodia,2016,Drivers/passengers of 4-wheeled vehicles,6.2
+22240818,Canada,2016,Drivers/passengers of 4-wheeled vehicles,64.3
+22240819,Chile,2016,Drivers/passengers of 4-wheeled vehicles,42
+22240820,Colombia,2016,Drivers/passengers of 4-wheeled vehicles,8.4
+22240821,Comoros,2016,Drivers/passengers of 4-wheeled vehicles,65.2
+22240822,Cook Islands,2016,Drivers/passengers of 4-wheeled vehicles,20
+22240823,Costa Rica,2016,Drivers/passengers of 4-wheeled vehicles,24
+22240824,Côte d'Ivoire,2016,Drivers/passengers of 4-wheeled vehicles,11.1
+22240825,Croatia,2016,Drivers/passengers of 4-wheeled vehicles,48.2
+22240826,Cuba,2016,Drivers/passengers of 4-wheeled vehicles,10.1
+22240827,Cyprus,2016,Drivers/passengers of 4-wheeled vehicles,34.8
+22240828,Czechia,2016,Drivers/passengers of 4-wheeled vehicles,53.7
+22240829,Democratic Republic of the Congo,2016,Drivers/passengers of 4-wheeled vehicles,36.1
+22240830,Denmark,2016,Drivers/passengers of 4-wheeled vehicles,48.3
+22240831,Dominica,2016,Drivers/passengers of 4-wheeled vehicles,10
+22240832,Dominican Republic,2016,Drivers/passengers of 4-wheeled vehicles,11
+22240833,Ecuador,2016,Drivers/passengers of 4-wheeled vehicles,5.2
+22240834,Egypt,2016,Drivers/passengers of 4-wheeled vehicles,45.1
+22240835,El Salvador,2016,Drivers/passengers of 4-wheeled vehicles,32.1
+22240836,Eritrea,2016,Drivers/passengers of 4-wheeled vehicles,36.2
+22240837,Estonia,2016,Drivers/passengers of 4-wheeled vehicles,52.1
+22240838,Eswatini,2016,Drivers/passengers of 4-wheeled vehicles,53.7
+22240839,Ethiopia,2016,Drivers/passengers of 4-wheeled vehicles,0
+22240841,Finland,2016,Drivers/passengers of 4-wheeled vehicles,64.7
+22240842,France,2016,Drivers/passengers of 4-wheeled vehicles,54.4
+22240843,Georgia,2016,Drivers/passengers of 4-wheeled vehicles,44.9
+22240844,Germany,2016,Drivers/passengers of 4-wheeled vehicles,47.8
+22240845,Ghana,2016,Drivers/passengers of 4-wheeled vehicles,12
+22240846,Greece,2016,Drivers/passengers of 4-wheeled vehicles,40.3
+22240847,Guatemala,2016,Drivers/passengers of 4-wheeled vehicles,19.4
+22240848,Guyana,2016,Drivers/passengers of 4-wheeled vehicles,24.2
+22240849,Honduras,2016,Drivers/passengers of 4-wheeled vehicles,18.6
+22240850,Hungary,2016,Drivers/passengers of 4-wheeled vehicles,44.3
+22240851,Iceland,2016,Drivers/passengers of 4-wheeled vehicles,72.2
+22240852,India,2016,Drivers/passengers of 4-wheeled vehicles,17.9
+22240853,Indonesia,2016,Drivers/passengers of 4-wheeled vehicles,4.9
+22240854,Iran (Islamic Republic of),2016,Drivers/passengers of 4-wheeled vehicles,48.7
+22240855,Ireland,2016,Drivers/passengers of 4-wheeled vehicles,62.2
+22240856,Israel,2016,Drivers/passengers of 4-wheeled vehicles,46.3
+22240857,Italy,2016,Drivers/passengers of 4-wheeled vehicles,42.8
+22240858,Jamaica,2016,Drivers/passengers of 4-wheeled vehicles,33
+22240859,Japan,2016,Drivers/passengers of 4-wheeled vehicles,32.4
+22240861,Kazakhstan,2016,Drivers/passengers of 4-wheeled vehicles,59.8
+22240863,Kiribati,2016,Drivers/passengers of 4-wheeled vehicles,40
+22240864,Kyrgyzstan,2016,Drivers/passengers of 4-wheeled vehicles,27.6
+22240865,Latvia,2016,Drivers/passengers of 4-wheeled vehicles,44.9
+22240867,Libya,2016,Drivers/passengers of 4-wheeled vehicles,75
+22240869,Luxembourg,2016,Drivers/passengers of 4-wheeled vehicles,62.5
+22240871,Malawi,2016,Drivers/passengers of 4-wheeled vehicles,31.1
+22240872,Maldives,2016,Drivers/passengers of 4-wheeled vehicles,0
+22240873,Mali,2016,Drivers/passengers of 4-wheeled vehicles,27.9
+22240874,Malta,2016,Drivers/passengers of 4-wheeled vehicles,18.2
+22240875,Marshall Islands,2013,Drivers/passengers of 4-wheeled vehicles,33.3
+22240876,Mauritius,2016,Drivers/passengers of 4-wheeled vehicles,16.7
+22240878,Micronesia (Federated States of),2016,Drivers/passengers of 4-wheeled vehicles,50
+22240879,Mongolia,2016,Drivers/passengers of 4-wheeled vehicles,39.3
+22240880,Montenegro,2016,Drivers/passengers of 4-wheeled vehicles,64.6
+22240881,Morocco,2016,Drivers/passengers of 4-wheeled vehicles,31.2
+22240882,Myanmar,2016,Drivers/passengers of 4-wheeled vehicles,10.8
+22240883,Netherlands,2016,Drivers/passengers of 4-wheeled vehicles,38
+22240884,New Zealand,2016,Drivers/passengers of 4-wheeled vehicles,68.5
+22240885,Nicaragua,2013,Drivers/passengers of 4-wheeled vehicles,23.2
+22240886,Nigeria,2016,Drivers/passengers of 4-wheeled vehicles,49.6
+22240887,Norway,2016,Drivers/passengers of 4-wheeled vehicles,64.7
+22240888,Pakistan,2016,Drivers/passengers of 4-wheeled vehicles,32.3
+22240889,Panama,2016,Drivers/passengers of 4-wheeled vehicles,52.5
+22240890,Papua New Guinea,2016,Drivers/passengers of 4-wheeled vehicles,16.5
+22240891,Paraguay,2016,Drivers/passengers of 4-wheeled vehicles,2.5
+22240892,Peru,2016,Drivers/passengers of 4-wheeled vehicles,0.3
+22240893,Philippines,2016,Drivers/passengers of 4-wheeled vehicles,46.8
+22240894,Poland,2016,Drivers/passengers of 4-wheeled vehicles,47.6
+22240895,Portugal,2016,Drivers/passengers of 4-wheeled vehicles,48.3
+22240896,Republic of Korea,2016,Drivers/passengers of 4-wheeled vehicles,17.6
+22240897,Republic of Moldova,2016,Drivers/passengers of 4-wheeled vehicles,46.1
+22240898,Romania,2016,Drivers/passengers of 4-wheeled vehicles,57.6
+22240899,Rwanda,2016,Drivers/passengers of 4-wheeled vehicles,46.7
+22240900,Saint Lucia,2016,Drivers/passengers of 4-wheeled vehicles,41.2
+22240901,Senegal,2016,Drivers/passengers of 4-wheeled vehicles,46.3
+22240902,Serbia,2016,Drivers/passengers of 4-wheeled vehicles,46.7
+22240903,Seychelles,2016,Drivers/passengers of 4-wheeled vehicles,7.8
+22240904,Singapore,2016,Drivers/passengers of 4-wheeled vehicles,50.2
+22240905,Slovakia,2016,Drivers/passengers of 4-wheeled vehicles,46.9
+22240906,Somalia,2016,Drivers/passengers of 4-wheeled vehicles,44.9
+22240907,South Sudan,2016,Drivers/passengers of 4-wheeled vehicles,46.5
+22240908,Spain,2016,Drivers/passengers of 4-wheeled vehicles,6.2
+22240909,Sudan,2016,Drivers/passengers of 4-wheeled vehicles,33.8
+22240910,Suriname,2016,Drivers/passengers of 4-wheeled vehicles,53.7
+22240911,Eswatini,2013,Drivers/passengers of 4-wheeled vehicles,62.4
+22240912,Sweden,2016,Drivers/passengers of 4-wheeled vehicles,34.7
+22240913,Switzerland,2016,Drivers/passengers of 4-wheeled vehicles,18.8
+22240915,Tajikistan,2016,Drivers/passengers of 4-wheeled vehicles,12.3
+22240916,Thailand,2016,Drivers/passengers of 4-wheeled vehicles,46.6
+22240917,Timor-Leste,2016,Drivers/passengers of 4-wheeled vehicles,17.3
+22240918,Togo,2016,Drivers/passengers of 4-wheeled vehicles,66.7
+22240919,Tonga,2016,Drivers/passengers of 4-wheeled vehicles,57.8
+22240921,Tunisia,2016,Drivers/passengers of 4-wheeled vehicles,21.7
+22240922,Turkmenistan,2016,Drivers/passengers of 4-wheeled vehicles,21.3
+22240923,Uganda,2016,Drivers/passengers of 4-wheeled vehicles,34
+22240924,Ukraine,2016,Drivers/passengers of 4-wheeled vehicles,54.5
+22240925,United Arab Emirates,2016,Drivers/passengers of 4-wheeled vehicles,46.2
+22240926,United Kingdom of Great Britain and Northern Ireland,2016,Drivers/passengers of 4-wheeled vehicles,38.5
+22240927,United Republic of Tanzania,2016,Drivers/passengers of 4-wheeled vehicles,63.9
+22240928,United States of America,2016,Drivers/passengers of 4-wheeled vehicles,30.7
+22240929,Viet Nam,2016,Drivers/passengers of 4-wheeled vehicles,52.2
+22240930,"occupied Palestinian territory, including east Jerusalem",2016,Drivers/passengers of 4-wheeled vehicles,26.7
+22240931,Zambia,2013,Drivers/passengers of 4-wheeled vehicles,48.4
+22240932,Albania,2016,Cyclists,7.8
+22240933,Antigua and Barbuda,2016,Cyclists,12.5
+22240934,Argentina,2016,Cyclists,2.4
+22240935,Armenia,2016,Cyclists,0.4
+22240936,Australia,2016,Cyclists,2.2
+22240937,Austria,2016,Cyclists,11.1
+22240938,Azerbaijan,2016,Cyclists,0.9
+22240939,Bahamas,2013,Cyclists,3.8
+22240940,Bahrain,2013,Cyclists,5.8
+22240941,Barbados,2016,Cyclists,0
+22240942,Belarus,2016,Cyclists,9.2
+22240943,Belgium,2016,Cyclists,11.1
+22240944,Belize,2016,Cyclists,11.9
+22240945,Benin,2016,Cyclists,0.8
+22240946,Botswana,2016,Cyclists,2
+22240947,Brazil,2016,Cyclists,3.4
+22240948,Bulgaria,2016,Cyclists,4.9
+22240949,Cambodia,2016,Cyclists,2.3
+22240950,Canada,2016,Cyclists,2.5
+22240951,Chile,2016,Cyclists,5.7
+22240952,Colombia,2016,Cyclists,5.3
+22240953,Comoros,2016,Cyclists,0
+22240954,Cook Islands,2016,Cyclists,0
+22240955,Costa Rica,2016,Cyclists,10.4
+22240956,Côte d'Ivoire,2016,Cyclists,0.3
+22240957,Croatia,2016,Cyclists,8.8
+22240958,Cuba,2016,Cyclists,9.9
+22240959,Cyprus,2016,Cyclists,4.3
+22240960,Czechia,2016,Cyclists,8.7
+22240961,Democratic Republic of the Congo,2016,Cyclists,0
+22240962,Denmark,2016,Cyclists,14.7
+22240963,Dominica,2016,Cyclists,60
+22240964,Dominican Republic,2016,Cyclists,1
+22240965,Ecuador,2016,Cyclists,1.8
+22240966,Egypt,2016,Cyclists,1.2
+22240967,El Salvador,2016,Cyclists,1.4
+22240968,Eritrea,2016,Cyclists,9.2
+22240969,Estonia,2016,Cyclists,7
+22240970,Eswatini,2016,Cyclists,2
+22240971,Finland,2016,Cyclists,9.5
+22240972,France,2016,Cyclists,4.7
+22240973,Georgia,2016,Cyclists,0.7
+22240974,Germany,2016,Cyclists,12.3
+22240975,Ghana,2016,Cyclists,3.3
+22240976,Greece,2016,Cyclists,2.2
+22240977,Guatemala,2016,Cyclists,0.4
+22240978,Guyana,2016,Cyclists,12.5
+22240979,Honduras,2016,Cyclists,4.1
+22240980,Hungary,2016,Cyclists,12
+22240981,Iceland,2016,Cyclists,0
+22240982,India,2016,Cyclists,1.7
+22240983,Indonesia,2016,Cyclists,3.2
+22240984,Iran (Islamic Republic of),2016,Cyclists,0.6
+22240985,Ireland,2016,Cyclists,5.3
+22240986,Israel,2016,Cyclists,2.7
+22240987,Italy,2016,Cyclists,7.3
+22240988,Jamaica,2016,Cyclists,8.4
+22240989,Japan,2016,Cyclists,15.1
+22240990,Jordan,2016,Cyclists,0
+22240991,Kazakhstan,2016,Cyclists,1.7
+22240992,Kenya,2016,Cyclists,2.4
+22240993,Kiribati,2016,Cyclists,0
+22240994,Kyrgyzstan,2016,Cyclists,0.2
+22240995,Latvia,2016,Cyclists,4.4
+22240996,Libya,2016,Cyclists,2.3
+22240997,Lithuania,2016,Cyclists,8.9
+22240998,Luxembourg,2016,Cyclists,3.1
+22240999,Malawi,2016,Cyclists,16
+22241000,Maldives,2016,Cyclists,0
+22241001,Mali,2016,Cyclists,2.4
+22241002,Malta,2016,Cyclists,4.5
+22241003,Mauritius,2016,Cyclists,6.9
+22241004,Mexico,2016,Cyclists,1.1
+22241005,Micronesia (Federated States of),2016,Cyclists,0
+22241006,Mongolia,2016,Cyclists,1.2
+22241007,Montenegro,2016,Cyclists,1.5
+22241008,Morocco,2016,Cyclists,5.9
+22241009,Myanmar,2016,Cyclists,3.1
+22241010,Netherlands,2016,Cyclists,29.8
+22241011,New Zealand,2016,Cyclists,1.5
+22241012,Nicaragua,2013,Cyclists,5.5
+22241013,Norway,2016,Cyclists,8.9
+22241014,Oman,2016,Cyclists,0.7
+22241015,Panama,2016,Cyclists,5.7
+22241016,Paraguay,2016,Cyclists,0.2
+22241017,Peru,2016,Cyclists,0.2
+22241018,Philippines,2016,Cyclists,0.1
+22241019,Poland,2016,Cyclists,9
+22241020,Portugal,2016,Cyclists,5.9
+22241021,Qatar,2016,Cyclists,2.8
+22241022,Republic of Korea,2016,Cyclists,5.9
+22241023,Republic of Moldova,2016,Cyclists,1.4
+22241024,Romania,2016,Cyclists,9
+22241025,Russian Federation,2016,Cyclists,2
+22241026,Saint Lucia,2016,Cyclists,13.3
+22241027,Samoa,2016,Cyclists,5.9
+22241028,Serbia,2016,Cyclists,9.4
+22241029,Seychelles,2016,Cyclists,6.7
+22241030,Singapore,2016,Cyclists,14.2
+22241031,Slovakia,2016,Cyclists,7.6
+22241032,Slovenia,2016,Cyclists,10
+22241033,South Africa,2016,Cyclists,3.2
+22241034,Spain,2016,Cyclists,3.7
+22241035,Sri Lanka,2016,Cyclists,8.1
+22241036,Suriname,2016,Cyclists,4.1
+22241037,Eswatini,2013,Cyclists,2
+22241038,Sweden,2016,Cyclists,8.1
+22241039,Switzerland,2016,Cyclists,15.3
+22241040,Syrian Arab Republic,2016,Cyclists,5.9
+22241041,Tajikistan,2016,Cyclists,2.3
+22241042,Thailand,2016,Cyclists,3.5
+22241043,North Macedonia,2016,Cyclists,6.1
+22241044,Tonga,2016,Cyclists,0
+22241045,Trinidad and Tobago,2016,Cyclists,0.7
+22241046,Tunisia,2016,Cyclists,2.5
+22241047,Turkey,2016,Cyclists,1.9
+22241048,Uganda,2016,Cyclists,5.8
+22241049,Ukraine,2016,Cyclists,7.1
+22241050,United Arab Emirates,2016,Cyclists,1.5
+22241051,United Kingdom of Great Britain and Northern Ireland,2016,Cyclists,5.5
+22241052,United Republic of Tanzania,2016,Cyclists,8
+22241053,United States of America,2016,Cyclists,2.3
+22241054,Uruguay,2016,Cyclists,7
+22241055,"occupied Palestinian territory, including east Jerusalem",2016,Cyclists,1.9
+22241056,Zambia,2013,Cyclists,11.6
+22241057,Zimbabwe,2016,Cyclists,12.2
+22241058,Albania,2016,Other/unspecified road users,2.2
+22241059,Angola,2016,Other/unspecified road users,0
+22241060,Antigua and Barbuda,2016,Other/unspecified road users,0
+22241061,Argentina,2016,Other/unspecified road users,20
+22241062,Armenia,2016,Other/unspecified road users,3.7
+22241063,Australia,2016,Other/unspecified road users,3.5
+22241064,Austria,2016,Other/unspecified road users,6.3
+22241065,Azerbaijan,2016,Other/unspecified road users,4.3
+22241066,Barbados,2016,Other/unspecified road users,11.1
+22241067,Belarus,2016,Other/unspecified road users,1
+22241068,Belgium,2016,Other/unspecified road users,5
+22241069,Belize,2016,Other/unspecified road users,24.8
+22241070,Benin,2016,Other/unspecified road users,9.1
+22241071,Bolivia (Plurinational State of),2016,Other/unspecified road users,17.1
+22241072,Botswana,2016,Other/unspecified road users,10.2
+22241073,Brazil,2016,Other/unspecified road users,24
+22241074,Bulgaria,2016,Other/unspecified road users,6.8
+22241075,Cambodia,2016,Other/unspecified road users,8.4
+22241076,Canada,2016,Other/unspecified road users,7.2
+22241077,Chile,2016,Other/unspecified road users,7.7
+22241078,Colombia,2016,Other/unspecified road users,7.8
+22241079,Comoros,2016,Other/unspecified road users,0
+22241080,Cook Islands,2016,Other/unspecified road users,0
+22241081,Costa Rica,2016,Other/unspecified road users,0.9
+22241082,Côte d'Ivoire,2016,Other/unspecified road users,13.4
+22241083,Croatia,2016,Other/unspecified road users,5.2
+22241084,Cuba,2016,Other/unspecified road users,31.2
+22241085,Cyprus,2016,Other/unspecified road users,8.7
+22241086,Czechia,2016,Other/unspecified road users,6.1
+22241087,Democratic Republic of the Congo,2016,Other/unspecified road users,0.3
+22241088,Denmark,2016,Other/unspecified road users,3.8
+22241089,Dominica,2016,Other/unspecified road users,20
+22241090,Dominican Republic,2016,Other/unspecified road users,4
+22241091,Ecuador,2016,Other/unspecified road users,54
+22241092,Egypt,2016,Other/unspecified road users,21.2
+22241093,El Salvador,2016,Other/unspecified road users,3.3
+22241094,Eritrea,2016,Other/unspecified road users,27.7
+22241095,Estonia,2016,Other/unspecified road users,8.5
+22241096,Eswatini,2016,Other/unspecified road users,0
+22241097,Ethiopia,2016,Other/unspecified road users,63.3
+22241098,Fiji,2016,Other/unspecified road users,0
+22241099,Finland,2016,Other/unspecified road users,6.3
+22241100,France,2016,Other/unspecified road users,3.8
+22241101,Georgia,2016,Other/unspecified road users,27.4
+22241102,Germany,2016,Other/unspecified road users,5.9
+22241103,Ghana,2016,Other/unspecified road users,20.7
+22241104,Greece,2016,Other/unspecified road users,7
+22241105,Guatemala,2016,Other/unspecified road users,8.3
+22241106,Guyana,2016,Other/unspecified road users,11.7
+22241107,Honduras,2016,Other/unspecified road users,25.1
+22241108,Hungary,2016,Other/unspecified road users,8.1
+22241109,Iceland,2016,Other/unspecified road users,5.6
+22241110,India,2016,Other/unspecified road users,30.4
+22241111,Indonesia,2016,Other/unspecified road users,2.7
+22241112,Iran (Islamic Republic of),2016,Other/unspecified road users,5
+22241113,Ireland,2016,Other/unspecified road users,2.1
+22241114,Israel,2016,Other/unspecified road users,10.1
+22241115,Italy,2016,Other/unspecified road users,6.7
+22241116,Jamaica,2016,Other/unspecified road users,7.7
+22241117,Japan,2016,Other/unspecified road users,1
+22241118,Jordan,2016,Other/unspecified road users,0
+22241119,Kazakhstan,2016,Other/unspecified road users,3.3
+22241120,Kenya,2016,Other/unspecified road users,0
+22241121,Kiribati,2016,Other/unspecified road users,0
+22241122,Kyrgyzstan,2016,Other/unspecified road users,30
+22241123,Latvia,2016,Other/unspecified road users,3.8
+22241124,Lebanon,2016,Other/unspecified road users,0
+22241125,Libya,2016,Other/unspecified road users,0
+22241126,Lithuania,2016,Other/unspecified road users,1
+22241127,Luxembourg,2016,Other/unspecified road users,0
+22241128,Madagascar,2016,Other/unspecified road users,0
+22241129,Malawi,2016,Other/unspecified road users,0.1
+22241130,Maldives,2016,Other/unspecified road users,0
+22241131,Mali,2016,Other/unspecified road users,15.9
+22241132,Malta,2016,Other/unspecified road users,9.1
+22241133,Mauritius,2016,Other/unspecified road users,0
+22241134,Mexico,2016,Other/unspecified road users,42.4
+22241135,Micronesia (Federated States of),2016,Other/unspecified road users,0
+22241136,Mongolia,2016,Other/unspecified road users,12.2
+22241137,Montenegro,2016,Other/unspecified road users,4.6
+22241138,Morocco,2016,Other/unspecified road users,7.9
+22241139,Myanmar,2016,Other/unspecified road users,7.1
+22241140,Netherlands,2016,Other/unspecified road users,1.6
+22241141,New Zealand,2016,Other/unspecified road users,6.4
+22241142,Nicaragua,2013,Other/unspecified road users,12.5
+22241143,Norway,2016,Other/unspecified road users,12.6
+22241144,Oman,2016,Other/unspecified road users,8.1
+22241145,Panama,2016,Other/unspecified road users,17.5
+22241146,Papua New Guinea,2016,Other/unspecified road users,0
+22241147,Paraguay,2016,Other/unspecified road users,8.7
+22241148,Peru,2016,Other/unspecified road users,88.6
+22241149,Philippines,2016,Other/unspecified road users,93.9
+22241150,Poland,2016,Other/unspecified road users,4.3
+22241151,Portugal,2016,Other/unspecified road users,6.4
+22241152,Qatar,2016,Other/unspecified road users,14.6
+22241153,Republic of Korea,2016,Other/unspecified road users,33.7
+22241154,Republic of Moldova,2016,Other/unspecified road users,58.1
+22241155,Romania,2016,Other/unspecified road users,3.3
+22241156,Russian Federation,2016,Other/unspecified road users,5.3
+22241157,Saint Lucia,2016,Other/unspecified road users,6.7
+22241158,Samoa,2016,Other/unspecified road users,5.9
+22241159,Serbia,2016,Other/unspecified road users,12.5
+22241160,Seychelles,2016,Other/unspecified road users,6.7
+22241161,Singapore,2016,Other/unspecified road users,0.7
+22241162,Slovakia,2016,Other/unspecified road users,4.4
+22241163,Slovenia,2016,Other/unspecified road users,6.9
+22241164,South Africa,2016,Other/unspecified road users,13.1
+22241165,Spain,2016,Other/unspecified road users,6.4
+22241166,Sri Lanka,2016,Other/unspecified road users,5.7
+22241167,Sudan,2016,Other/unspecified road users,71.4
+22241168,Suriname,2016,Other/unspecified road users,1.4
+22241169,Sweden,2016,Other/unspecified road users,6.3
+22241170,Switzerland,2016,Other/unspecified road users,4.2
+22241171,Syrian Arab Republic,2016,Other/unspecified road users,4.2
+22241172,Tajikistan,2016,Other/unspecified road users,0
+22241173,Thailand,2016,Other/unspecified road users,2.3
+22241174,North Macedonia,2016,Other/unspecified road users,4.7
+22241175,Togo,2016,Other/unspecified road users,11.1
+22241176,Tonga,2016,Other/unspecified road users,5.6
+22241177,Trinidad and Tobago,2016,Other/unspecified road users,8.1
+22241178,Tunisia,2016,Other/unspecified road users,0.7
+22241179,Turkey,2016,Other/unspecified road users,38
+22241180,Uganda,2016,Other/unspecified road users,0
+22241181,Ukraine,2016,Other/unspecified road users,8.4
+22241182,United Arab Emirates,2016,Other/unspecified road users,14.2
+22241183,United Kingdom of Great Britain and Northern Ireland,2016,Other/unspecified road users,4.1
+22241184,United Republic of Tanzania,2016,Other/unspecified road users,0.8
+22241185,United States of America,2016,Other/unspecified road users,4.2
+22241186,Uruguay,2016,Other/unspecified road users,0
+22241187,"occupied Palestinian territory, including east Jerusalem",2016,Other/unspecified road users,10.7
+22241188,Zimbabwe,2016,Other/unspecified road users,37.2
+22241189,Albania,2016,Pedestrians,38.7
+22241190,Andorra,2013,Pedestrians,50
+22241191,Angola,2016,Pedestrians,40.5
+22241192,Antigua and Barbuda,2016,Pedestrians,25
+22241193,Argentina,2016,Pedestrians,8.2
+22241194,Armenia,2016,Pedestrians,34.8
+22241195,Australia,2016,Pedestrians,14
+22241196,Austria,2016,Pedestrians,16.9
+22241197,Azerbaijan,2016,Pedestrians,42
+22241198,Bahamas,2013,Pedestrians,21.2
+22241199,Bahrain,2013,Pedestrians,31.4
+22241200,Barbados,2016,Pedestrians,22.2
+22241201,Belarus,2016,Pedestrians,41.3
+22241202,Belgium,2016,Pedestrians,12.2
+22241203,Belize,2016,Pedestrians,24.8
+22241204,Benin,2016,Pedestrians,16.8
+22241205,Bolivia (Plurinational State of),2016,Pedestrians,2.5
+22241206,Botswana,2016,Pedestrians,24.7
+22241207,Brazil,2016,Pedestrians,18.1
+22241208,Bulgaria,2016,Pedestrians,16.7
+22241209,Cambodia,2016,Pedestrians,9.6
+22241210,Canada,2016,Pedestrians,15.2
+22241211,Chile,2016,Pedestrians,36
+22241212,Colombia,2016,Pedestrians,26
+22241213,Comoros,2016,Pedestrians,17.4
+22241214,Cook Islands,2016,Pedestrians,0
+22241215,Costa Rica,2016,Pedestrians,24.7
+22241216,Côte d'Ivoire,2016,Pedestrians,40.2
+22241217,Croatia,2016,Pedestrians,21.8
+22241218,Cuba,2016,Pedestrians,33.2
+22241219,Cyprus,2016,Pedestrians,30.4
+22241220,Czechia,2016,Pedestrians,21.3
+22241221,Democratic Republic of the Congo,2016,Pedestrians,51.9
+22241222,Denmark,2016,Pedestrians,17.1
+22241223,Dominica,2016,Pedestrians,10
+22241224,Dominican Republic,2016,Pedestrians,17
+22241225,Ecuador,2016,Pedestrians,19.8
+22241226,Egypt,2016,Pedestrians,26.9
+22241227,El Salvador,2016,Pedestrians,49
+22241228,Eritrea,2016,Pedestrians,25.4
+22241229,Estonia,2016,Pedestrians,31
+22241230,Eswatini,2016,Pedestrians,43.8
+22241231,Ethiopia,2016,Pedestrians,36.7
+22241232,Fiji,2016,Pedestrians,36.7
+22241233,Finland,2016,Pedestrians,10.7
+22241234,France,2016,Pedestrians,16.1
+22241235,Georgia,2016,Pedestrians,26.5
+22241236,Germany,2016,Pedestrians,15.3
+22241237,Ghana,2016,Pedestrians,46.1
+22241238,Greece,2016,Pedestrians,18.1
+22241239,Guatemala,2016,Pedestrians,39.2
+22241240,Guyana,2016,Pedestrians,29.7
+22241241,Honduras,2016,Pedestrians,27.9
+22241242,Hungary,2016,Pedestrians,25
+22241243,Iceland,2016,Pedestrians,11.1
+22241244,India,2016,Pedestrians,10.4
+22241245,Indonesia,2016,Pedestrians,15.5
+22241246,Iran (Islamic Republic of),2016,Pedestrians,21.6
+22241247,Ireland,2016,Pedestrians,18.6
+22241248,Israel,2016,Pedestrians,28.7
+22241249,Italy,2016,Pedestrians,17.6
+22241250,Jamaica,2016,Pedestrians,22.2
+22241251,Japan,2016,Pedestrians,35
+22241252,Jordan,2016,Pedestrians,28.7
+22241253,Kazakhstan,2016,Pedestrians,30.9
+22241254,Kenya,2016,Pedestrians,37
+22241255,Kiribati,2016,Pedestrians,40
+22241256,Kyrgyzstan,2016,Pedestrians,40
+22241257,Latvia,2016,Pedestrians,34.8
+22241258,Lebanon,2016,Pedestrians,37
+22241259,Libya,2016,Pedestrians,20.8
+22241260,Lithuania,2016,Pedestrians,38
+22241261,Luxembourg,2016,Pedestrians,25
+22241262,Madagascar,2016,Pedestrians,47.1
+22241263,Malawi,2016,Pedestrians,49.6
+22241264,Maldives,2016,Pedestrians,25
+22241265,Mali,2016,Pedestrians,11.5
+22241266,Malta,2016,Pedestrians,27.3
+22241267,Mauritius,2016,Pedestrians,30.6
+22241268,Mexico,2016,Pedestrians,28.5
+22241269,Micronesia (Federated States of),2016,Pedestrians,50
+22241270,Mongolia,2016,Pedestrians,28.7
+22241271,Montenegro,2016,Pedestrians,13.8
+22241272,Morocco,2016,Pedestrians,26.3
+22241273,Myanmar,2016,Pedestrians,14.2
+22241274,Netherlands,2016,Pedestrians,9.2
+22241275,New Zealand,2016,Pedestrians,7.6
+22241276,Nicaragua,2013,Pedestrians,32.8
+22241277,Norway,2016,Pedestrians,11.9
+22241278,Oman,2016,Pedestrians,22.5
+22241279,Palau,2013,Pedestrians,100
+22241280,Panama,2016,Pedestrians,40
+22241281,Papua New Guinea,2016,Pedestrians,47.5
+22241282,Paraguay,2016,Pedestrians,22.5
+22241283,Peru,2016,Pedestrians,8.1
+22241284,Philippines,2016,Pedestrians,1
+22241285,Poland,2016,Pedestrians,28.7
+22241286,Portugal,2016,Pedestrians,21.8
+22241287,Qatar,2016,Pedestrians,32
+22241288,Republic of Korea,2016,Pedestrians,39.9
+22241289,Republic of Moldova,2016,Pedestrians,18.5
+22241290,Romania,2016,Pedestrians,37.2
+22241291,Russian Federation,2016,Pedestrians,29.2
+22241292,Saint Lucia,2016,Pedestrians,13.3
+22241293,Saint Vincent and the Grenadines,2013,Pedestrians,47.1
+22241294,Senegal,2016,Pedestrians,23.1
+22241295,Serbia,2016,Pedestrians,20
+22241296,Seychelles,2016,Pedestrians,33.3
+22241297,Singapore,2016,Pedestrians,29.1
+22241298,Slovakia,2016,Pedestrians,16.9
+22241299,Somalia,2016,Pedestrians,38.4
+22241300,South Sudan,2016,Pedestrians,21.5
+22241301,Spain,2016,Pedestrians,29.2
+22241302,Sri Lanka,2016,Pedestrians,28.6
+22241303,Sudan,2016,Pedestrians,14.9
+22241304,Suriname,2016,Pedestrians,15.6
+22241305,Eswatini,2013,Pedestrians,33.5
+22241306,Switzerland,2016,Pedestrians,23.1
+22241307,Syrian Arab Republic,2016,Pedestrians,64.7
+22241308,Tajikistan,2016,Pedestrians,40.3
+22241309,Thailand,2016,Pedestrians,7.6
+22241310,North Macedonia,2016,Pedestrians,33.1
+22241311,Tonga,2016,Pedestrians,27.8
+22241312,Trinidad and Tobago,2016,Pedestrians,31.1
+22241313,Tunisia,2016,Pedestrians,24.6
+22241314,Turkey,2016,Pedestrians,23.4
+22241315,Uganda,2016,Pedestrians,39.5
+22241316,Ukraine,2016,Pedestrians,41.9
+22241317,United Arab Emirates,2016,Pedestrians,24.3
+22241318,United Kingdom of Great Britain and Northern Ireland,2016,Pedestrians,23.7
+22241319,United Republic of Tanzania,2016,Pedestrians,29.9
+22241320,United States of America,2016,Pedestrians,15.3
+22241321,Uruguay,2016,Pedestrians,16.6
+22241322,"occupied Palestinian territory, including east Jerusalem",2016,Pedestrians,32.7
+22241323,Zambia,2013,Pedestrians,36.4
+22241324,Zimbabwe,2016,Pedestrians,13.7

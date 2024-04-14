@@ -1,0 +1,217 @@
+---
+title: "Road Traffic Mortality"
+output: pdf_document
+date: "`r Sys.Date()`"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(dplyr)
+```
+
+# Tidying Data
+
+### Hephzibah Saidu & Nikki Cohen
+
+## Reading in Data
+
+```{r reading in files, message=FALSE}
+# reading in 196
+rs_196 <- read_csv("RS_196.csv")
+
+# selecting columns that contain data
+rs_196 <- rs_196 |>
+  select(
+    Id:DisaggregatingDimension1ValueCode,
+    Value:High,
+    Date:TimeDimensionEnd
+  )
+
+# reading in 246
+rs_246 <- read_csv("RS_246.csv")
+
+# selecting columns that contain data
+rs_246 <- rs_246 |>
+  select(
+    Id:DisaggregatingDimension1ValueCode,
+    Value,
+    NumericValue,
+    Date:TimeDimensionEnd
+  )
+
+# reading in 198
+rs_198 <- read_csv("RS_198.csv")
+
+# selecting columns that contain data
+rs_198 <- rs_198 |>
+  select(
+    Id:DisaggregatingDimension1ValueCode,
+    Value:High, Date:TimeDimensionEnd
+  )
+
+# reading in code files for tidying
+country <- read_csv("COUNTRY.csv")
+region <- read_csv("REGION.csv")
+worldbank <- read_csv("WORLDBANKINCOMEGROUP.csv")
+sex <- read_csv("SEX.csv")
+roadtype <- read_csv("ROADUSERTYPE.csv")
+```
+
+## Preview of the Three Datasets
+
+# RS_196: Estimated Number of Road Traffic Deaths
+
+```{r preview of data, message=FALSE}
+head(rs_196)
+```
+
+# RS_198: Estimated Road Traffic Death Rate (per 100,000 Population)
+
+```{r preview of data2, message=FALSE}
+head(rs_198)
+```
+
+# RS_246: Distribution of Road Traffic Deaths by Road User
+
+```{r preview of data3, message=FALSE}
+head(rs_246)
+```
+
+## Tidying RS_246
+
+```{r RS_246 tidying, message=FALSE}
+# create a lookup table
+road <- subset(roadtype, select = c("Code", "Title"))
+n_country <- subset(country, select = c("Code", "Title"))
+
+rs_246 <- rs_246 |>
+  # selecting relevant columns
+  select(
+    Id, SpatialDimensionValueCode, TimeDim, DisaggregatingDimension1ValueCode,
+    NumericValue
+  ) |>
+  # renaming columns to meaningful names
+  rename(
+    Country = SpatialDimensionValueCode, Year = TimeDim,
+    `Vehicle Type` = DisaggregatingDimension1ValueCode
+  )
+
+# omitting any NA values
+rs_246 <- na.omit(rs_246)
+
+rs_246$`Vehicle Type` <- road$Title[match(rs_246$`Vehicle Type`, road$Code)]
+rs_246$Country <- n_country$Title[match(rs_246$Country, n_country$Code)]
+
+# Preview of RS_246
+head(rs_246)
+```
+
+## Tidying RS_198
+
+```{r RS_198 tidying, message=FALSE}
+n_sex <- subset(sex, select = c("Code", "Title"))
+n_region <- subset(region, select = c("Code", "Title"))
+n_bank <- subset(worldbank, select = c("Code", "Title"))
+
+rs_198 <- rs_198 |>
+  # selecting relevant columns
+  select(
+    Id, SpatialDimension, SpatialDimensionValueCode, TimeDim,
+    DisaggregatingDimension1ValueCode, NumericValue:High
+  ) |>
+  # renaming columns to meaningful names
+  rename(
+    `Geographic Code` = SpatialDimension,
+    `Geographic Value` = SpatialDimensionValueCode,
+    Year = TimeDim,
+    Sex = DisaggregatingDimension1ValueCode,
+    Rate = NumericValue
+  )
+
+# omitting NA values
+rs_198 <- na.omit(rs_198)
+
+# lookup for SEX
+rs_198$Sex <- n_sex$Title[match(rs_198$Sex, n_sex$Code)]
+
+# lookup for COUNTRY
+rs_198$`Geographic Value`[rs_198$`Geographic Code` == "COUNTRY"] <-
+  n_country$Title[match(
+    rs_198$`Geographic Value`[rs_198$`Geographic Code` == "COUNTRY"],
+    n_country$Code
+  )]
+
+# lookup for REGION
+rs_198$`Geographic Value`[rs_198$`Geographic Code` == "REGION"] <-
+  n_region$Title[match(
+    rs_198$`Geographic Value`[rs_198$`Geographic Code` == "REGION"],
+    n_region$Code
+  )]
+
+# lookup for WORLDBANKINCOMEGROUP
+rs_198$`Geographic Value`[rs_198$`Geographic Code` == "WORLDBANKINCOMEGROUP"] <-
+  n_bank$Title[match(
+    rs_198$`Geographic Value`[
+      rs_198$`Geographic Code` == "WORLDBANKINCOMEGROUP"
+    ],
+    n_bank$Code
+  )]
+
+# preview of RS_198
+head(rs_198)
+```
+
+## Tidying RS_196
+
+```{r RS_196 tidying, message=FALSE}
+rs_196 <- rs_196 |>
+  # selecting relevant columns
+  select(
+    Id, SpatialDimension, SpatialDimensionValueCode, TimeDim,
+    DisaggregatingDimension1ValueCode, NumericValue:High
+  ) |>
+  # renaming columns to meaningful names
+  rename(
+    `Geographic Code` = SpatialDimension,
+    `Geographic Value` = SpatialDimensionValueCode,
+    Year = TimeDim, Sex = DisaggregatingDimension1ValueCode,
+    Rate = NumericValue
+  )
+
+# omitting NA values
+rs_196 <- na.omit(rs_196)
+
+# lookup for SEX
+rs_196$Sex <- n_sex$Title[match(rs_196$Sex, n_sex$Code)]
+
+# lookup for COUNTRY
+rs_196$`Geographic Value`[rs_196$`Geographic Code` == "COUNTRY"] <-
+  n_country$Title[match(rs_196$`Geographic Value`[
+    rs_196$`Geographic Code` == "COUNTRY"
+  ], n_country$Code)]
+
+# lookup for REGION
+rs_196$`Geographic Value`[rs_196$`Geographic Code` == "REGION"] <-
+  n_region$Title[match(rs_196$`Geographic Value`[
+    rs_196$`Geographic Code` == "REGION"
+  ], n_region$Code)]
+
+# lookup for WORLDBANKINCOMEGROUP
+rs_196$`Geographic Value`[rs_196$`Geographic Code` == "WORLDBANKINCOMEGROUP"] <-
+  n_bank$Title[match(
+    rs_196$`Geographic Value`[
+      rs_196$`Geographic Code` == "WORLDBANKINCOMEGROUP"
+    ],
+    n_bank$Code
+  )]
+
+# preview of RS_196
+head(rs_196)
+```
+
+```{r writing out tidied data to CSV files, message=FALSE}
+write_csv(rs_246, "tidied_246.csv")
+write_csv(rs_198, "tidied_198.csv")
+write_csv(rs_196, "tidied_196.csv")
+```
