@@ -94,13 +94,13 @@ rs_246 <- rs_246 |>
   # renaming columns to meaningful names
   rename(
     Country = SpatialDimensionValueCode, Year = TimeDim,
-    `Vehicle Type` = DisaggregatingDimension1ValueCode
+    `Road User Type` = DisaggregatingDimension1ValueCode
   )
 
 # omitting any NA values
 rs_246 <- na.omit(rs_246)
 
-rs_246$`Vehicle Type` <- road$Title[match(rs_246$`Vehicle Type`, road$Code)]
+rs_246$`Road User Type` <- road$Title[match(rs_246$`Road User Type`, road$Code)]
 rs_246$Country <- n_country$Title[match(rs_246$Country, n_country$Code)]
 
 # Preview of RS_246
@@ -214,4 +214,158 @@ head(rs_196)
 write_csv(rs_246, "tidied_246.csv")
 write_csv(rs_198, "tidied_198.csv")
 write_csv(rs_196, "tidied_196.csv")
+```
+
+# Visualizations
+
+### Krishna Choudhary, Suchita Sharma and Yug Deepak Rajani
+
+```{r Types of vehicles that are involved in the fatalities, message=FALSE}
+data <- rs_246 %>%
+  select(Country, `Road User Type`, NumericValue)
+
+# Create a color palette (adjust colors as desired)
+colors <- c(
+  "royalblue",
+  "forestgreen",
+  "darkorange",
+  "purple",
+  "brown",
+  "red",
+  "gold"
+)
+
+# Create the plot using ggplot
+ggplot(data, aes(
+  x = `Road User Type`,
+  y = NumericValue, fill = `Road User Type`
+)) +
+  geom_bar(stat = "identity") + # No need for fill argument here
+  labs(
+    title = "Distribution of Road Traffic Deaths by Type of Road User",
+    x = "Road User Type", y = "Number of Deaths"
+  ) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  # Add scale_fill_manual to define color mapping and legend
+  scale_fill_manual(values = colors, name = "Road User Type")
+```
+
+Drivers and passengers of 4-wheeled vehicles have the highest number of road traffic deaths according to the chart.
+Cyclists have the lowest number of road traffic deaths among the categories displayed.
+
+
+```{r Demographic Trends in Road Traffic Deaths, message=FALSE}
+# Filter data for Geographic Code "COUNTRY" and select relevant columns
+data <- rs_198 %>%
+  filter(`Geographic Code` == "COUNTRY") %>% # Filter by Geographic Code
+  select(`Geographic Value` = `Geographic Value`, Sex, Year, Rate)
+
+# Calculate average death rate per year and sex
+data_average <- data %>%
+  group_by(`Geographic Value`, Sex, Year) %>%
+  summarise(avg_death_rate = mean(Rate))
+
+data_plot <- data_average
+
+# Create the visualization with ggplot (using Rate)
+ggplot(data_plot, aes(x = Year, y = avg_death_rate, color = Sex)) +
+  geom_point(aes(alpha = 0.5)) +
+  labs(
+    title = "Demographic Trends in Road Traffic Deaths",
+    x = "Year", y = "Death Rate (per 100,000 population)",
+    color = "Sex"
+  ) +
+  facet_wrap(~Sex) + # Create separate plots for each Sex category
+  theme_bw()
+```
+
+There seems to be a downward trend in road traffic deaths for both males and females over the years. This suggests a positive development in road safety during the given period.
+
+The death rate appears consistently higher for males compared to females throughout the years shown. However, both sexes follow a similar downward trend.
+
+```{r Mortality Rates by Country, message=FALSE}
+data <- rs_198 %>%
+  filter(`Geographic Code` == "COUNTRY") %>% # Filter by Geographic Code
+  select(`Geographic Value` = `Geographic Value`, Sex, Year, Rate)
+
+# Filter the data for the latest year (it's 2019 from the dataset)
+
+latest_data <- data %>%
+  filter(Year == 2019)
+
+# Sort the data by mortality rate
+sorted_data <- latest_data %>%
+  arrange(desc(Rate))
+
+# Select top N countries
+top_n <- 10
+top_n_countries <- sorted_data[1:top_n, ]
+
+# Select bottom N countries
+bottom_n_countries <- tail(sorted_data, n = top_n)
+
+# Combine top and bottom N countries
+combined_data <- rbind(top_n_countries, bottom_n_countries)
+
+# Create a variable to differentiate between top and bottom N
+combined_data$Category <-
+  ifelse(combined_data$`Geographic Value` %in% top_n_countries$`Geographic Value`,
+    "Top N", "Bottom N"
+  )
+
+library(gridExtra)
+
+# Create separate plots for top and bottom N countries
+plot_top <- ggplot(
+  top_n_countries,
+  aes(x = reorder(`Geographic Value`, Rate), y = Rate)
+) +
+  geom_bar(stat = "identity", fill = "salmon") +
+  labs(
+    title = "Top 10 Countries with the Highest Estimated Road Traffic Mortality Rate (2019)",
+    x = "Country",
+    y = "Mortality Rate",
+    caption = "Data source: RS_198 dataset"
+  ) +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+plot_bottom <- ggplot(
+  bottom_n_countries,
+  aes(x = reorder(`Geographic Value`, Rate), y = Rate)
+) +
+  geom_bar(stat = "identity", fill = "skyblue") +
+  labs(
+    title = "Bottom 10 Countries with the Lowest Estimated Road Traffic Mortality Rate (2019)",
+    x = "Country",
+    y = "Mortality Rate",
+    caption = "Data source: RS_198 dataset"
+  ) +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+# Combine plots side by side
+grid.arrange(plot_top, plot_bottom, ncol = 2)
+```
+
+```{r}
+# Filter data using WORLDBANKINCOMEGROUP
+income_data <- rs_196 %>%
+  filter(`Geographic Code` == "WORLDBANKINCOMEGROUP")
+
+# Create the box plot
+ggplot(income_data, aes(
+  x = `Geographic Value`,
+  y = Rate, fill = `Geographic Value`
+)) +
+  geom_boxplot() +
+  labs(
+    title = "Distribution of Estimated Number of Road Traffic Deaths by Income Level",
+    x = "Income Level",
+    y = "Estimated Number of Road Traffic Deaths",
+    fill = "Income Level",
+    caption = "Data source: RS_196 dataset"
+  ) +
+  scale_y_continuous(labels = function(x) format(x, scientific = FALSE)) +
+  theme_minimal()
 ```
