@@ -9,6 +9,8 @@ knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
 library(dplyr)
 library(gridExtra)
+library(ggplot2)
+library(maps)
 ```
 
 # Tidying Data
