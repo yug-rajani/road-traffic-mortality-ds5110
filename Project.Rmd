@@ -8,6 +8,7 @@ date: "`r Sys.Date()`"
 knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
 library(dplyr)
+library(gridExtra)
 ```
 
 # Tidying Data
@@ -370,69 +371,201 @@ ggplot(income_data, aes(
   theme_minimal()
 ```
 
-```{r}
-library(ggplot2)
-library(maps)
-library(countrycode)
+```{r Trends in Mortality Over Time}
 
-# Load the world map data
-world_data <- map_data("world")
+# Summarize the total deaths for RS_196
+total_deaths <- rs_196 %>%
+  group_by(Year) %>%
+  summarize(Total_Deaths = sum(Rate, na.rm = TRUE)) %>%
+  mutate(Metric = "Total Deaths") %>%
+  ungroup()
 
-# Create a data frame with country names from map_data("world")
-country_names <- unique(world_data$region)
-country_data <- data.frame(region = country_names)
+# Summarize the average death rate for RS_198
+average_death_rate <- rs_198 %>%
+  group_by(Year) %>%
+  summarize(Average_Death_Rate = mean(Rate, na.rm = TRUE)) %>%
+  mutate(Metric = "Average Death Rate") %>%
+  ungroup()
 
-# Convert country names to ISO codes
-country_data$ISO_Code <- countrycode(
-  sourcevar = country_data$region,
-  origin = "country.name",
-  destination = "iso3c"
-)
+# Combine the two summaries for faceting
+combined_summary <- bind_rows(total_deaths, average_death_rate) %>%
+  mutate(Value = ifelse(Metric == "Total Deaths", Total_Deaths, Average_Death_Rate))
 
-# Generate sample data for demonstration
-set.seed(123)
-data <- data.frame(
-  ISO_Code = sample(country_data$ISO_Code, size = 100, replace = TRUE),
-  Mortality = runif(100, min = 0, max = 100)
-)
+# Create the faceted plot
+ggplot(combined_summary, aes(x = Year, y = Value)) +
+  geom_line() +
+  facet_wrap(~ Metric, scales = "free_y", ncol = 1) +  # Facet by metric, with free y scales
+  labs(title = "Road Traffic Deaths and Death Rates Over Time",
+       x = "Year",
+       y = "Value") +
+  theme_minimal() +
+  theme(plot.title = element_text(hjust = 0.5))
 
-# Load the world map data
-world_data <- map_data("world")
-
-# Create a data frame with country names from map_data("world")
-country_names <- unique(world_data$region)
-country_data <- data.frame(region = country_names)
-
-# Convert country names to ISO codes
-country_data$ISO_Code <- countrycode(
-  sourcevar = country_data$region,
-  origin = "country.name",
-  destination = "iso3c"
-)
-
-# Generate sample data for demonstration
-set.seed(123)
-data <- data.frame(
-  ISO_Code = sample(country_data$ISO_Code, size = 100, replace = TRUE),
-  Mortality = runif(100, min = 0, max = 100)
-)
-
-head(data)
-# Merge the world map data with the country ISO codes
-merged_world_data <- merge(world_data, country_data, by = "region", all.x = TRUE)
-
-# Merge the world map data with the mortality data using ISO codes
-merged_data <- merge(merged_world_data, data, by = "ISO_Code", all.x = TRUE)
-
-# Plot the map
-# Plot the map with a lighter color palette and more highlighted regions
-ggplot(merged_data, aes(fill = Mortality, map_id = region)) +
-  geom_map(map = merged_data, aes(map_id = region), color = "white") +
-  expand_limits(x = merged_data$long, y = merged_data$lat) +
-  scale_fill_gradient(low = "green", high = "red", name = "Mortality", limits = c(0, 50)) +
-  labs(
-    title = "Distribution of Mortality Among Regions and Countries",
-    caption = "Data source: Sample data"
-  ) +
-  theme_void()
 ```
+
+The faceted graph illustrates two distinct aspects of road traffic fatalities over time. The upper panel, displaying the average death rate per 100,000 population, shows a downward trajectory. This suggests a reduction in the individual risk of dying in road traffic incidents, which could be due to enhanced road safety protocols, improved emergency healthcare, or other preventive measures.
+
+Contrastingly, the lower panel highlights the total number of road traffic deaths, which is subject to fluctuations yet trends upward over the same period. This increase in absolute numbers may reflect external factors such as a growing population, more vehicles on the roads, or even shifts in how deaths are reported and recorded. The increase does not necessarily contradict the lowered death rate but rather indicates that the overall impact and toll of road traffic deaths are rising, possibly outpacing the improvements in individual risk reduction.
+
+This divergence in trends underscores a complex narrative: advancements in road safety are indeed making individual road users safer, yet the overall challenge of road traffic fatalities is far from resolved, perhaps intensified by demographic and societal changes. It signals a clear need for a sustained, if not escalated, focus on road safety initiatives, particularly as the population and the number of road users continue to grow.
+
+
+```{r Gender based mortality rate}
+
+# Aggregating the RS_196 data by year and sex
+rs_196_agg <- rs_196 %>%
+  group_by(Year, Sex) %>%
+  summarize(Average_Deaths = mean(Rate, na.rm = TRUE), .groups = 'drop')
+
+# Plotting RS_196
+ggplot(rs_196_agg, aes(x = Year, y = Average_Deaths, color = Sex)) +
+  geom_line() +
+  geom_point() +
+  labs(title = "Average Estimated Number of Road Traffic Deaths Over Time",
+       x = "Year", y = "Average Number of Deaths",
+       color = "Sex") +
+  theme_minimal()
+
+# Aggregating the RS_198 data by year and sex
+rs_198_agg <- rs_198 %>%
+  group_by(Year, Sex) %>%
+  summarize(Average_Rate = mean(Rate, na.rm = TRUE), .groups = 'drop')
+
+# Plotting RS_198
+ggplot(rs_198_agg, aes(x = Year, y = Average_Rate, color = Sex)) +
+  geom_line() +
+  geom_point() +
+  labs(title = "Average Estimated Road Traffic Death Rate Over Time (per 100,000 population)",
+       x = "Year", y = "Average Death Rate",
+       color = "Sex") +
+  theme_minimal()
+
+```
+
+The first graph of aggregated data depicts the average estimated number of road traffic deaths. It shows relatively stable trends for male and female deaths, with the number for males being consistently higher than for females. The data for both sexes combined are not shown, which is typically higher due to the aggregation.
+
+The second graph of aggregated data illustrates the average estimated road traffic death rate per 100,000 population, again segmented by sex. The rate for males decreases slightly over time, while the rate for females remains more constant. Both rates seem to converge in recent years, indicating a potential decrease in the gender gap in road traffic death rates.
+
+In both graphs, there's an evident gender disparity with males experiencing higher mortality rates, whether in absolute numbers or standardized rates. These visualizations help to convey the critical public health message that male populations might be at a higher risk for road traffic fatalities and could benefit from targeted interventions.
+
+```{r Error bars for low/high value range}
+
+# Improved plot for RS_198 with error bars
+ggplot(rs_198, aes(x = Year, y = Rate, color = Sex, group = Sex)) +
+  geom_line(alpha = 0.5) +
+  geom_point(size = 2, alpha = 0.5) +
+  geom_errorbar(aes(ymin = Low, ymax = High), width = 0.4, linewidth = 0.5, alpha = 0.8) +
+  labs(title = "Average Road Traffic Death Rate with Confidence Intervals",
+       x = "Year", y = "Death Rate", color = "Sex") +
+  theme_minimal()
+
+# Improved plot for RS_196 with error bars
+ggplot(rs_196, aes(x = Year, y = Rate, color = Sex, group = Sex)) +
+  geom_line(alpha = 0.5) +
+  geom_point(size = 2, alpha = 0.5) +
+  geom_errorbar(aes(ymin = Low, ymax = High), width = 0.4, linewidth = 0.5, alpha = 0.8) +
+  labs(title = "Number of Road Traffic Deaths with Confidence Intervals",
+       x = "Year", y = "Number of Deaths", color = "Sex") +
+  theme_minimal()
+```
+
+The visualized data provides a comprehensive overview of road traffic death rates and total number of deaths, differentiated by sex, over a span of two decades.
+
+The first graph titled "Average Road Traffic Death Rate with Confidence Intervals" illustrates the death rates per 100,000 population. It reveals a slight decline over the observed period, more noticeable for males than females. Despite starting from a higher baseline, male death rates have gradually converged towards those of females, indicating a relative improvement in male traffic-related mortality rates. Nevertheless, the wider confidence intervals for males throughout the years imply a greater variability in the rate or possibly less precision in measurement compared to females, whose rates not only start lower but also exhibit less variability, as evidenced by the narrower error bars.
+
+The second graph, depicting the "Number of Road Traffic Deaths with Confidence Intervals," shows the absolute counts of traffic-related fatalities. Contrary to the death rates, there is no clear directional trend in the total number of deaths for either sex over time. While males consistently suffer higher fatalities than females, the substantial overlap in confidence intervals year by year suggests significant uncertainty about the exact differences in the numbers between the sexes. The large error bars, particularly for males, highlight this uncertainty, suggesting that while the number of deaths is high, the exact figures should be interpreted with caution due to potential measurement or sampling variability.
+
+In summary, these graphs underscore a persistent gender disparity in road traffic deaths, with males consistently being at a higher risk. However, an encouraging downward trend in death rates, especially for males, suggests some progress in road safety outcomes. The substantial error bars call for a cautious interpretation of the data, pointing to the need for more refined data collection methods to better understand the dynamics of road traffic-related fatalities.
+
+```{r Distributions of mortality amongst regions and countries}
+
+# Filter for regions
+region_data_196 <- rs_196 %>%
+  filter(`Geographic Code` == "REGION")
+
+# Filter for regions
+region_data_198 <- rs_198 %>%
+  filter(`Geographic Code` == "REGION")
+
+# Faceted plot for regions for 196
+ggplot(region_data_196, aes(x = Year, y = Rate, color = `Geographic Value`)) +
+  geom_line() +
+  geom_point() +
+  facet_wrap(~`Geographic Value`, scales = "free_y") +
+  labs(title = "Mortality Rates by Region",
+       x = "Year", y = "Estimated number of deaths") +
+  theme_minimal() +
+  theme(legend.position = "none")
+
+# Faceted plot for regions for 198
+ggplot(region_data_198, aes(x = Year, y = Rate, color = `Geographic Value`)) +
+  geom_line() +
+  geom_point() +
+  facet_wrap(~`Geographic Value`, scales = "free_y") +
+  labs(title = "Mortality Rates by Region",
+       x = "Year", y = "Estimated death rate (per 100 000 population)") +
+  theme_minimal() +
+  theme(legend.position = "none")
+
+```
+The provided plots offer a regional comparison of mortality due to road traffic incidents, depicted in two different metrics. The first chart presents the estimated number of deaths, while the second reflects the estimated death rate per 100,000 population. Both are faceted by region and span over 15 years.
+
+In the first plot, we see significant variation between regions. The African region exhibits the highest estimated numbers, with a dense clustering of points that do not indicate a clear trend, potentially signifying both high mortality rates and significant year-to-year fluctuations. The Western Pacific shows a similar pattern, with a less pronounced magnitude. Other regions such as the Americas, Europe, and the Eastern Mediterranean demonstrate lower estimated numbers of deaths and show more consistency over the years, albeit with slight fluctuations.
+
+The second plot, showing mortality rates per 100,000 population, allows for standardized comparisons across regions regardless of population size. Here, the trends appear more consistent across the years, with the Western Pacific and Africa regions exhibiting the highest rates. Europe, the Americas, and the Eastern Mediterranean reflect lower mortality rates, aligning with the first plot. However, the per capita standardization makes the relative differences between regions more apparent and comparable.
+
+The key observations are as follows:
+
+- Africa and the Western Pacific consistently show the highest burden of road traffic deaths, whether in absolute numbers or rates adjusted per capita.
+- Europe and the Americas demonstrate lower mortality figures across both metrics, which could be indicative of more effective road safety measures, better healthcare systems, or a combination of both.
+- The global trend across all regions shows no significant decrease or increase, suggesting that road safety interventions might not be advancing sufficiently to reduce the overall mortality rate.
+
+These insights underscore the importance of targeted road safety measures and healthcare system improvements, particularly in regions with higher mortality rates. The stability of the data suggests that while certain regions are disproportionately affected, the global challenge of road traffic safety remains persistent. Addressing these issues will require concerted efforts tailored to the unique needs and circumstances of each region.
+
+```{r Distributions of mortality amongst income groups}
+
+# Filter for World Bank income groups
+income_group_data_196 <- rs_196 %>%
+  filter(`Geographic Code` == "WORLDBANKINCOMEGROUP")
+
+# Faceted plot for World Bank income groups for 196
+ggplot(income_group_data_196, aes(x = Year, y = Rate, color = `Geographic Value`)) +
+  geom_line() +
+  geom_point() +
+  facet_wrap(~`Geographic Value`, scales = "free_y") +
+  labs(title = "Mortality Rates by World Bank Income Group",
+       x = "Year", y = "Estimated number of deaths") +
+  theme_minimal() +
+  theme(legend.position = "none")
+
+# Filter for World Bank income groups for 198
+income_group_data_198 <- rs_198 %>%
+  filter(`Geographic Code` == "WORLDBANKINCOMEGROUP")
+
+# Faceted plot for World Bank income groups for 198
+ggplot(income_group_data_198, aes(x = Year, y = Rate, color = `Geographic Value`)) +
+  geom_line() +
+  geom_point() +
+  facet_wrap(~`Geographic Value`, scales = "free_y") +
+  labs(title = "Mortality Rates by World Bank Income Group",
+       x = "Year", y = "Estimated death rate (per 100 000 population)") +
+  theme_minimal() +
+  theme(legend.position = "none")
+
+
+
+```
+
+The plots offer an analysis of mortality rates due to road traffic incidents categorized by World Bank income groups, using two distinct measures. The first graph provides the estimated number of deaths, while the second graph shows the estimated death rate per 100,000 population. Both visualizations are separated by income group and cover a period of over 15 years.
+
+From the first plot representing the estimated number of deaths, we observe a striking distinction between the income groups. High-income groups display the lowest estimated numbers, with a trend that decreases slightly over time. This contrasts sharply with lower-middle and upper-middle-income groups, which demonstrate significantly higher estimated numbers of deaths and more pronounced volatility year on year. The low-income group shows the highest variability in the estimated number of deaths, suggesting large disparities within this income category.
+
+The second plot, illustrating mortality rates per 100,000 population, provides a more standardized perspective across different population sizes. Here, we see that high-income groups have the lowest rates, maintaining a consistent decline over the years. The mortality rates for the low, lower-middle, and upper-middle-income groups are higher, with the upper-middle-income group showing a slight decrease in recent years. The low-income group's rates remain the highest and most volatile, echoing the trends seen in the estimated number of deaths.
+
+The main takeaways from these observations are:
+
+- High-income groups experience the lowest mortality rates and estimated numbers of deaths from road traffic incidents, with a discernible downward trend over time, likely reflecting more robust road safety protocols and health care systems.
+- The low and middle-income groups encounter higher mortality figures, with the low-income group facing the highest rates and the greatest fluctuations, indicating a critical need for enhanced road safety measures and healthcare services.
+- While there's a general trend of high mortality rates in lower-income groups, the upper-middle-income group shows potential signs of improvement, suggesting that increases in income and associated infrastructure investments may be positively impacting road safety.
+
+The consistency in the data for high-income groups across both graphs underlines the effectiveness of interventions in these regions. In contrast, the instability and high mortality rates in lower-income groups highlight the ongoing challenges these areas face. Addressing these disparities requires focused efforts tailored to the economic and infrastructural realities of each income group.
