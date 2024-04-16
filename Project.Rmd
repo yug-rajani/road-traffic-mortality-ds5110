@@ -221,7 +221,7 @@ write_csv(rs_196, "tidied_196.csv")
 
 # Visualizations
 
-### Krishna Choudhary, Suchita Sharma and Yug Deepak Rajani
+### Krishna Choudhary and Yug Deepak Rajani
 
 ```{r Types of vehicles that are involved in the fatalities, message=FALSE}
 data <- rs_246 %>%
@@ -571,3 +571,7 @@ The main takeaways from these observations are:
 - While there's a general trend of high mortality rates in lower-income groups, the upper-middle-income group shows potential signs of improvement, suggesting that increases in income and associated infrastructure investments may be positively impacting road safety.
 
 The consistency in the data for high-income groups across both graphs underlines the effectiveness of interventions in these regions. In contrast, the instability and high mortality rates in lower-income groups highlight the ongoing challenges these areas face. Addressing these disparities requires focused efforts tailored to the economic and infrastructural realities of each income group.
+
+# Model
+
+### Krishna Choudhary and Suchita Sharma
