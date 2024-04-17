@@ -255,9 +255,7 @@ plot_1 <- ggplot(data, aes(
 ggsave(filename = "plot_1.png", plot = plot_1, width = 8, height = 6)
 ```
 
-Drivers and passengers of 4-wheeled vehicles have the highest number of road traffic deaths according to the chart.
-Cyclists have the lowest number of road traffic deaths among the categories displayed.
-
+Drivers and passengers of 4-wheeled vehicles have the highest number of road traffic deaths according to the chart. Cyclists have the lowest number of road traffic deaths among the categories displayed.
 
 ```{r Demographic Trends in Road Traffic Deaths, message=FALSE}
 # Filter data for Geographic Code "COUNTRY" and select relevant columns
@@ -421,7 +419,6 @@ Contrastingly, the lower panel highlights the total number of road traffic death
 
 This divergence in trends underscores a complex narrative: advancements in road safety are indeed making individual road users safer, yet the overall challenge of road traffic fatalities is far from resolved, perhaps intensified by demographic and societal changes. It signals a clear need for a sustained, if not escalated, focus on road safety initiatives, particularly as the population and the number of road users continue to grow.
 
-
 ```{r Gender based mortality rate}
 
 # Aggregating the RS_196 data by year and sex
@@ -527,6 +524,7 @@ plot_82 <- ggplot(region_data_198, aes(x = Year, y = Rate, color = `Geographic V
 ggsave(filename = "plot_81.png", plot = plot_81, width = 8, height = 6)
 ggsave(filename = "plot_82.png", plot = plot_82, width = 8, height = 6)
 ```
+
 The provided plots offer a regional comparison of mortality due to road traffic incidents, depicted in two different metrics. The first chart presents the estimated number of deaths, while the second reflects the estimated death rate per 100,000 population. Both are faceted by region and span over 15 years.
 
 In the first plot, we see significant variation between regions. The African region exhibits the highest estimated numbers, with a dense clustering of points that do not indicate a clear trend, potentially signifying both high mortality rates and significant year-to-year fluctuations. The Western Pacific shows a similar pattern, with a less pronounced magnitude. Other regions such as the Americas, Europe, and the Eastern Mediterranean demonstrate lower estimated numbers of deaths and show more consistency over the years, albeit with slight fluctuations.
@@ -535,9 +533,9 @@ The second plot, showing mortality rates per 100,000 population, allows for stan
 
 The key observations are as follows:
 
-- Africa and the Western Pacific consistently show the highest burden of road traffic deaths, whether in absolute numbers or rates adjusted per capita.
-- Europe and the Americas demonstrate lower mortality figures across both metrics, which could be indicative of more effective road safety measures, better healthcare systems, or a combination of both.
-- The global trend across all regions shows no significant decrease or increase, suggesting that road safety interventions might not be advancing sufficiently to reduce the overall mortality rate.
+-   Africa and the Western Pacific consistently show the highest burden of road traffic deaths, whether in absolute numbers or rates adjusted per capita.
+-   Europe and the Americas demonstrate lower mortality figures across both metrics, which could be indicative of more effective road safety measures, better healthcare systems, or a combination of both.
+-   The global trend across all regions shows no significant decrease or increase, suggesting that road safety interventions might not be advancing sufficiently to reduce the overall mortality rate.
 
 These insights underscore the importance of targeted road safety measures and healthcare system improvements, particularly in regions with higher mortality rates. The stability of the data suggests that while certain regions are disproportionately affected, the global challenge of road traffic safety remains persistent. Addressing these issues will require concerted efforts tailored to the unique needs and circumstances of each region.
 
@@ -583,12 +581,11 @@ The second plot, illustrating mortality rates per 100,000 population, provides a
 
 The main takeaways from these observations are:
 
-- High-income groups experience the lowest mortality rates and estimated numbers of deaths from road traffic incidents, with a discernible downward trend over time, likely reflecting more robust road safety protocols and health care systems.
-- The low and middle-income groups encounter higher mortality figures, with the low-income group facing the highest rates and the greatest fluctuations, indicating a critical need for enhanced road safety measures and healthcare services.
-- While there's a general trend of high mortality rates in lower-income groups, the upper-middle-income group shows potential signs of improvement, suggesting that increases in income and associated infrastructure investments may be positively impacting road safety.
+-   High-income groups experience the lowest mortality rates and estimated numbers of deaths from road traffic incidents, with a discernible downward trend over time, likely reflecting more robust road safety protocols and health care systems.
+-   The low and middle-income groups encounter higher mortality figures, with the low-income group facing the highest rates and the greatest fluctuations, indicating a critical need for enhanced road safety measures and healthcare services.
+-   While there's a general trend of high mortality rates in lower-income groups, the upper-middle-income group shows potential signs of improvement, suggesting that increases in income and associated infrastructure investments may be positively impacting road safety.
 
 The consistency in the data for high-income groups across both graphs underlines the effectiveness of interventions in these regions. In contrast, the instability and high mortality rates in lower-income groups highlight the ongoing challenges these areas face. Addressing these disparities requires focused efforts tailored to the economic and infrastructural realities of each income group.
-
 
 ```{r Distribution of Mortality Among Regions and Countries}
 library(ggplot2)
@@ -658,12 +655,11 @@ plot_10 <- ggplot(merged_data, aes(fill = Mortality, map_id = region)) +
 ggsave(filename = "plot_10.png", plot = plot_10, width = 8, height = 6)
 ```
 
-
 # Model-fitting
 
 ### Krishna Choudhary and Suchita Sharma
 
-```{r Predictors are Country, Year and Road User Types}
+```{r Predicting percentage by using predictors as Year and Road User Types from rs_246}
 
 # RS_246 contains Distribution of road traffic deaths by type of road user (%)
 
@@ -691,3 +687,95 @@ rmse <- sqrt(mean((predictions - test_data$NumericValue)^2, na.rm = TRUE))
 print(paste("RMSE:", rmse))
 
 ```
+
+```{r Predicting Death rate by using predictions as Year and genders from global data from rs_198}
+
+# Convert Year to a numeric type if it's not already
+rs_198$Year <- as.numeric(as.character(rs_198$Year))
+
+# Convert Sex to a factor if it's not already
+rs_198$Sex <- as.factor(rs_198$Sex)
+
+# Build a linear regression model with Rate as the outcome and Year and Sex as predictors
+model_rs_198 <- lm(Rate ~ Year + Sex, data = rs_198)
+
+# Check the summary of the model to see the results
+summary(model_rs_198)
+
+# Plotting Rate against Year
+ggplot(rs_198, aes(x = Year, y = Rate)) +
+  geom_point(aes(color = Sex), alpha = 0.5) +  # Use different colors for different sexes
+  geom_smooth(method = "lm", aes(color = Sex), se = FALSE) +  # Add a linear model line
+  labs(title = "Rate Over Time by Sex",
+       x = "Year",
+       y = "Rate") +
+  theme_minimal()
+
+# Creating a boxplot of Rate by Sex
+ggplot(rs_198, aes(x = Sex, y = Rate)) +
+  geom_boxplot(aes(fill = Sex)) +  # Fill the boxplot by Sex
+  labs(title = "Comparison of Rate by Sex",
+       x = "Sex",
+       y = "Rate") +
+  theme_minimal()
+
+# First, we need to add the residuals and fitted values to the data frame
+rs_198$residuals <- residuals(model_rs_198)
+rs_198$fitted_values <- fitted(model_rs_198)
+
+# Plotting residuals
+ggplot(rs_198, aes(x = fitted_values, y = residuals)) +
+  geom_point(alpha = 0.5) +
+  geom_hline(yintercept = 0, linetype = "dashed", color = "red") +  # Add a horizontal line at 0
+  labs(title = "Residuals vs. Fitted Values",
+       x = "Fitted Values",
+       y = "Residuals") +
+  theme_minimal()
+
+# Splitting the data into training and testing datasets
+set.seed(123)  # Ensures reproducibility
+indices <- sample(1:nrow(rs_198), size = 0.8 * nrow(rs_198))  # 80% for training
+train_data <- rs_198[indices, ]
+test_data <- rs_198[-indices, ]
+
+# Build a linear regression model with Rate as the outcome and Year and Sex as predictors on the training data
+model_rs_198 <- lm(Rate ~ Year + Sex, data = train_data)
+
+# Check the summary of the model
+summary(model_rs_198)
+
+# Model diagnostics
+par(mfrow = c(2, 2))
+plot(model_rs_198)
+
+# Predicting and evaluating model performance
+predictions_rs_198 <- predict(model_rs_198, newdata = test_data)
+rmse_rs_198 <- sqrt(mean((predictions_rs_198 - test_data$Rate)^2, na.rm = TRUE))
+print(paste("RMSE for rs_198:", rmse_rs_198))
+
+
+```
+
+## Model Summary and Diagnostic Plots Analysis
+
+### Model Interpretation
+
+The linear regression model predicts the `Rate` using `Year` and `Sex` as predictors. The intercept is relatively high, but since there's no year zero in the data, it serves as a baseline for our predictions rather than a practical value.
+
+The `Year` coefficient is negative, indicating that the rate decreases over time, with a small annual decrease of 0.1590 units each year. This suggests an overall downward trend in the global data.
+
+The `Sex` coefficients show a significant difference between males and females. With `Both sexes` as the baseline, females have a lower rate by 8.6480 units, and males have a higher rate by 8.6629 units. This points to a gender disparity in the rates being studied.
+
+The R-squared value of 0.3534 suggests that around 35% of the variability in the rate is explained by the model, which is a moderate amount. However, this also indicates that there are other factors not captured by the model that affect the rate.
+
+### Plot Analysis
+
+**Rate Over Time by Sex:** The plot demonstrates the rates for males and females over time. The downward trend is consistent with the model's negative coefficient for `Year`.
+
+**Comparison of Rate by Sex:** The boxplot clearly shows that males generally have higher rates than females, which is consistent with the coefficients in the model summary.
+
+**Residuals vs. Fitted Values:** The residuals plot does not display any obvious patterns, indicating that the model does not suffer from non-linearity. However, the spread of residuals seems consistent across the range of fitted values, suggesting homoscedasticity.
+
+### Conclusions
+
+The model indicates a global decrease in the rates over time and a consistent gender difference. However, since the model only explains 35% of the variability, it's likely that other factors, which are not included in the model, also influence the rates. The plots support the validity of the model but suggest that additional variables might improve its explanatory power.
