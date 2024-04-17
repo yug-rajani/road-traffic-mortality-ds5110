@@ -588,3 +588,72 @@ The main takeaways from these observations are:
 - While there's a general trend of high mortality rates in lower-income groups, the upper-middle-income group shows potential signs of improvement, suggesting that increases in income and associated infrastructure investments may be positively impacting road safety.
 
 The consistency in the data for high-income groups across both graphs underlines the effectiveness of interventions in these regions. In contrast, the instability and high mortality rates in lower-income groups highlight the ongoing challenges these areas face. Addressing these disparities requires focused efforts tailored to the economic and infrastructural realities of each income group.
+
+
+```{r Distribution of Mortality Among Regions and Countries}
+library(ggplot2)
+library(maps)
+library(countrycode)
+
+
+# Load the world map data
+world_data <- map_data("world")
+
+# Create a data frame with country names from map_data("world")
+country_names <- unique(world_data$region)
+country_data <- data.frame(region = country_names)
+
+# Convert country names to ISO codes
+country_data$ISO_Code <- countrycode(sourcevar = country_data$region,
+                                     origin = "country.name",
+                                     destination = "iso3c")
+
+# Generate sample data for demonstration
+set.seed(123)
+data <- data.frame(
+  ISO_Code = sample(country_data$ISO_Code, size = 100, replace = TRUE),
+  Mortality = runif(100, min = 0, max = 100)
+)
+
+library(ggplot2)
+library(maps)
+library(countrycode)
+
+# Load the world map data
+world_data <- map_data("world")
+
+# Create a data frame with country names from map_data("world")
+country_names <- unique(world_data$region)
+country_data <- data.frame(region = country_names)
+
+# Convert country names to ISO codes
+country_data$ISO_Code <- countrycode(sourcevar = country_data$region,
+                                     origin = "country.name",
+                                     destination = "iso3c")
+
+# Generate sample data for demonstration
+set.seed(123)
+data <- data.frame(
+  ISO_Code = sample(country_data$ISO_Code, size = 100, replace = TRUE),
+  Mortality = runif(100, min = 0, max = 100)
+)
+
+head(data)
+# Merge the world map data with the country ISO codes
+merged_world_data <- merge(world_data, country_data, by = "region", all.x = TRUE)
+
+# Merge the world map data with the mortality data using ISO codes
+merged_data <- merge(merged_world_data, data, by = "ISO_Code", all.x = TRUE)
+
+# Plot the map
+# Plot the map with a lighter color palette and more highlighted regions
+plot_10 <- ggplot(merged_data, aes(fill = Mortality, map_id = region)) +
+  geom_map(map = merged_data, aes(map_id = region), color = "white") +
+  expand_limits(x = merged_data$long, y = merged_data$lat) +
+  scale_fill_gradient(low = "green", high = "red", name = "Mortality", limits = c(0, 50)) +
+  labs(title = "Distribution of Mortality Among Regions and Countries",
+       caption = "Data source: Sample data") +
+  theme_void()
+
+ggsave(filename = "plot_10.png", plot = plot_10, width = 8, height = 6)
+```
