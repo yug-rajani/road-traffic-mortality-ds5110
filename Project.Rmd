@@ -580,24 +580,18 @@ The consistency in the data for high-income groups across both graphs underlines
 
 # RS_246 contains Distribution of road traffic deaths by type of road user (%)
 
-# Ensure all potential levels are recognized for the 'Country' factor
-all_countries <- unique(rs_246$Country)  # Get all unique country names
-
-# Apply factor setting with all known levels to the 'Country' column
-rs_246$Country <- factor(rs_246$Country, levels = all_countries)
-rs_246$Year <- as.factor(rs_246$Year)
+# Ensuring 'Road User Type' and 'Year' are factored
 rs_246$`Road User Type` <- as.factor(rs_246$`Road User Type`)
+rs_246$Year <- as.factor(rs_246$Year)
 
-# Now proceed with splitting the data
-set.seed(123)  # Set seed for reproducibility
+# Splitting the data into training and testing datasets
+set.seed(123)  # Ensures reproducibility
 indices <- sample(1:nrow(rs_246), size = 0.8 * nrow(rs_246))  # 80% for training
 train_data <- rs_246[indices, ]
 test_data <- rs_246[-indices, ]
 
-# Model fitting
-model <- lm(NumericValue ~ `Road User Type` + Year + Country, data = train_data)
-
-# Check the summary of the model
+# Using a linear regression model to predict NumericValue without 'Country'
+model <- lm(NumericValue ~ `Road User Type` + Year, data = train_data)
 summary(model)
 
 # Model diagnostics
@@ -605,9 +599,8 @@ par(mfrow = c(2, 2))
 plot(model)
 
 # Model prediction and evaluation
-# This step should now work without error
 predictions <- predict(model, newdata = test_data)
-rmse <- sqrt(mean((predictions - test_data$NumericValue, na.rm = TRUE)^2))
-print(paste("RMSE: ", rmse))
+rmse <- sqrt(mean((predictions - test_data$NumericValue)^2, na.rm = TRUE))
+print(paste("RMSE:", rmse))
 
 ```
