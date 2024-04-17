@@ -239,7 +239,7 @@ colors <- c(
 )
 
 # Create the plot using ggplot
-ggplot(data, aes(
+plot_1 <- ggplot(data, aes(
   x = `Road User Type`,
   y = NumericValue, fill = `Road User Type`
 )) +
@@ -251,6 +251,8 @@ ggplot(data, aes(
   theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
   # Add scale_fill_manual to define color mapping and legend
   scale_fill_manual(values = colors, name = "Road User Type")
+
+ggsave(filename = "plot_1.png", plot = plot_1, width = 8, height = 6)
 ```
 
 Drivers and passengers of 4-wheeled vehicles have the highest number of road traffic deaths according to the chart.
@@ -271,7 +273,7 @@ data_average <- data %>%
 data_plot <- data_average
 
 # Create the visualization with ggplot (using Rate)
-ggplot(data_plot, aes(x = Year, y = avg_death_rate, color = Sex)) +
+plot_2 <- ggplot(data_plot, aes(x = Year, y = avg_death_rate, color = Sex)) +
   geom_point(aes(alpha = 0.5)) +
   labs(
     title = "Demographic Trends in Road Traffic Deaths",
@@ -280,6 +282,8 @@ ggplot(data_plot, aes(x = Year, y = avg_death_rate, color = Sex)) +
   ) +
   facet_wrap(~Sex) + # Create separate plots for each Sex category
   theme_bw()
+
+ggsave(filename = "plot_2.png", plot = plot_2, width = 8, height = 6)
 ```
 
 There seems to be a downward trend in road traffic deaths for both males and females over the years. This suggests a positive development in road safety during the given period.
@@ -349,6 +353,9 @@ plot_bottom <- ggplot(
 
 # Combine plots side by side
 grid.arrange(plot_top, plot_bottom, ncol = 2)
+
+ggsave(filename = "plot_31.png", plot = plot_top, width = 8, height = 6)
+ggsave(filename = "plot_32.png", plot = plot_bottom, width = 8, height = 6)
 ```
 
 ```{r}
@@ -357,7 +364,7 @@ income_data <- rs_196 %>%
   filter(`Geographic Code` == "WORLDBANKINCOMEGROUP")
 
 # Create the box plot
-ggplot(income_data, aes(
+plot_4 <- ggplot(income_data, aes(
   x = `Geographic Value`,
   y = Rate, fill = `Geographic Value`
 )) +
@@ -371,6 +378,8 @@ ggplot(income_data, aes(
   ) +
   scale_y_continuous(labels = function(x) format(x, scientific = FALSE)) +
   theme_minimal()
+
+ggsave(filename = "plot_4.png", plot = plot_4, width = 8, height = 6)
 ```
 
 ```{r Trends in Mortality Over Time}
@@ -394,7 +403,7 @@ combined_summary <- bind_rows(total_deaths, average_death_rate) %>%
   mutate(Value = ifelse(Metric == "Total Deaths", Total_Deaths, Average_Death_Rate))
 
 # Create the faceted plot
-ggplot(combined_summary, aes(x = Year, y = Value)) +
+plot_5 <- ggplot(combined_summary, aes(x = Year, y = Value)) +
   geom_line() +
   facet_wrap(~ Metric, scales = "free_y", ncol = 1) +  # Facet by metric, with free y scales
   labs(title = "Road Traffic Deaths and Death Rates Over Time",
@@ -403,6 +412,7 @@ ggplot(combined_summary, aes(x = Year, y = Value)) +
   theme_minimal() +
   theme(plot.title = element_text(hjust = 0.5))
 
+ggsave(filename = "plot_5.png", plot = plot_5, width = 8, height = 6)
 ```
 
 The faceted graph illustrates two distinct aspects of road traffic fatalities over time. The upper panel, displaying the average death rate per 100,000 population, shows a downward trajectory. This suggests a reduction in the individual risk of dying in road traffic incidents, which could be due to enhanced road safety protocols, improved emergency healthcare, or other preventive measures.
@@ -420,7 +430,7 @@ rs_196_agg <- rs_196 %>%
   summarize(Average_Deaths = mean(Rate, na.rm = TRUE), .groups = 'drop')
 
 # Plotting RS_196
-ggplot(rs_196_agg, aes(x = Year, y = Average_Deaths, color = Sex)) +
+plot_61 <- ggplot(rs_196_agg, aes(x = Year, y = Average_Deaths, color = Sex)) +
   geom_line() +
   geom_point() +
   labs(title = "Average Estimated Number of Road Traffic Deaths Over Time",
@@ -434,13 +444,16 @@ rs_198_agg <- rs_198 %>%
   summarize(Average_Rate = mean(Rate, na.rm = TRUE), .groups = 'drop')
 
 # Plotting RS_198
-ggplot(rs_198_agg, aes(x = Year, y = Average_Rate, color = Sex)) +
+plot_62 <- ggplot(rs_198_agg, aes(x = Year, y = Average_Rate, color = Sex)) +
   geom_line() +
   geom_point() +
   labs(title = "Average Estimated Road Traffic Death Rate Over Time (per 100,000 population)",
        x = "Year", y = "Average Death Rate",
        color = "Sex") +
   theme_minimal()
+
+ggsave(filename = "plot_61.png", plot = plot_61, width = 8, height = 6)
+ggsave(filename = "plot_62.png", plot = plot_62, width = 8, height = 6)
 
 ```
 
@@ -453,7 +466,7 @@ In both graphs, there's an evident gender disparity with males experiencing high
 ```{r Error bars for low/high value range}
 
 # Improved plot for RS_198 with error bars
-ggplot(rs_198, aes(x = Year, y = Rate, color = Sex, group = Sex)) +
+plot_71 <- ggplot(rs_198, aes(x = Year, y = Rate, color = Sex, group = Sex)) +
   geom_line(alpha = 0.5) +
   geom_point(size = 2, alpha = 0.5) +
   geom_errorbar(aes(ymin = Low, ymax = High), width = 0.4, linewidth = 0.5, alpha = 0.8) +
@@ -462,13 +475,15 @@ ggplot(rs_198, aes(x = Year, y = Rate, color = Sex, group = Sex)) +
   theme_minimal()
 
 # Improved plot for RS_196 with error bars
-ggplot(rs_196, aes(x = Year, y = Rate, color = Sex, group = Sex)) +
+plot_72 <- ggplot(rs_196, aes(x = Year, y = Rate, color = Sex, group = Sex)) +
   geom_line(alpha = 0.5) +
   geom_point(size = 2, alpha = 0.5) +
   geom_errorbar(aes(ymin = Low, ymax = High), width = 0.4, linewidth = 0.5, alpha = 0.8) +
   labs(title = "Number of Road Traffic Deaths with Confidence Intervals",
        x = "Year", y = "Number of Deaths", color = "Sex") +
   theme_minimal()
+ggsave(filename = "plot_71.png", plot = plot_71, width = 8, height = 6)
+ggsave(filename = "plot_72.png", plot = plot_72, width = 8, height = 6)
 ```
 
 The visualized data provides a comprehensive overview of road traffic death rates and total number of deaths, differentiated by sex, over a span of two decades.
@@ -490,7 +505,7 @@ region_data_198 <- rs_198 %>%
   filter(`Geographic Code` == "REGION")
 
 # Faceted plot for regions for 196
-ggplot(region_data_196, aes(x = Year, y = Rate, color = `Geographic Value`)) +
+plot_81 <- ggplot(region_data_196, aes(x = Year, y = Rate, color = `Geographic Value`)) +
   geom_line() +
   geom_point() +
   facet_wrap(~`Geographic Value`, scales = "free_y") +
@@ -500,7 +515,7 @@ ggplot(region_data_196, aes(x = Year, y = Rate, color = `Geographic Value`)) +
   theme(legend.position = "none")
 
 # Faceted plot for regions for 198
-ggplot(region_data_198, aes(x = Year, y = Rate, color = `Geographic Value`)) +
+plot_82 <- ggplot(region_data_198, aes(x = Year, y = Rate, color = `Geographic Value`)) +
   geom_line() +
   geom_point() +
   facet_wrap(~`Geographic Value`, scales = "free_y") +
@@ -509,6 +524,8 @@ ggplot(region_data_198, aes(x = Year, y = Rate, color = `Geographic Value`)) +
   theme_minimal() +
   theme(legend.position = "none")
 
+ggsave(filename = "plot_81.png", plot = plot_81, width = 8, height = 6)
+ggsave(filename = "plot_82.png", plot = plot_82, width = 8, height = 6)
 ```
 The provided plots offer a regional comparison of mortality due to road traffic incidents, depicted in two different metrics. The first chart presents the estimated number of deaths, while the second reflects the estimated death rate per 100,000 population. Both are faceted by region and span over 15 years.
 
@@ -531,7 +548,7 @@ income_group_data_196 <- rs_196 %>%
   filter(`Geographic Code` == "WORLDBANKINCOMEGROUP")
 
 # Faceted plot for World Bank income groups for 196
-ggplot(income_group_data_196, aes(x = Year, y = Rate, color = `Geographic Value`)) +
+plot_91 <- ggplot(income_group_data_196, aes(x = Year, y = Rate, color = `Geographic Value`)) +
   geom_line() +
   geom_point() +
   facet_wrap(~`Geographic Value`, scales = "free_y") +
@@ -545,7 +562,7 @@ income_group_data_198 <- rs_198 %>%
   filter(`Geographic Code` == "WORLDBANKINCOMEGROUP")
 
 # Faceted plot for World Bank income groups for 198
-ggplot(income_group_data_198, aes(x = Year, y = Rate, color = `Geographic Value`)) +
+plot_92 <- ggplot(income_group_data_198, aes(x = Year, y = Rate, color = `Geographic Value`)) +
   geom_line() +
   geom_point() +
   facet_wrap(~`Geographic Value`, scales = "free_y") +
@@ -554,8 +571,8 @@ ggplot(income_group_data_198, aes(x = Year, y = Rate, color = `Geographic Value`
   theme_minimal() +
   theme(legend.position = "none")
 
-
-
+ggsave(filename = "plot_91.png", plot = plot_91, width = 8, height = 6)
+ggsave(filename = "plot_92.png", plot = plot_92, width = 8, height = 6)
 ```
 
 The plots offer an analysis of mortality rates due to road traffic incidents categorized by World Bank income groups, using two distinct measures. The first graph provides the estimated number of deaths, while the second graph shows the estimated death rate per 100,000 population. Both visualizations are separated by income group and cover a period of over 15 years.
@@ -571,6 +588,76 @@ The main takeaways from these observations are:
 - While there's a general trend of high mortality rates in lower-income groups, the upper-middle-income group shows potential signs of improvement, suggesting that increases in income and associated infrastructure investments may be positively impacting road safety.
 
 The consistency in the data for high-income groups across both graphs underlines the effectiveness of interventions in these regions. In contrast, the instability and high mortality rates in lower-income groups highlight the ongoing challenges these areas face. Addressing these disparities requires focused efforts tailored to the economic and infrastructural realities of each income group.
+
+
+```{r Distribution of Mortality Among Regions and Countries}
+library(ggplot2)
+library(maps)
+library(countrycode)
+
+
+# Load the world map data
+world_data <- map_data("world")
+
+# Create a data frame with country names from map_data("world")
+country_names <- unique(world_data$region)
+country_data <- data.frame(region = country_names)
+
+# Convert country names to ISO codes
+country_data$ISO_Code <- countrycode(sourcevar = country_data$region,
+                                     origin = "country.name",
+                                     destination = "iso3c")
+
+# Generate sample data for demonstration
+set.seed(123)
+data <- data.frame(
+  ISO_Code = sample(country_data$ISO_Code, size = 100, replace = TRUE),
+  Mortality = runif(100, min = 0, max = 100)
+)
+
+library(ggplot2)
+library(maps)
+library(countrycode)
+
+# Load the world map data
+world_data <- map_data("world")
+
+# Create a data frame with country names from map_data("world")
+country_names <- unique(world_data$region)
+country_data <- data.frame(region = country_names)
+
+# Convert country names to ISO codes
+country_data$ISO_Code <- countrycode(sourcevar = country_data$region,
+                                     origin = "country.name",
+                                     destination = "iso3c")
+
+# Generate sample data for demonstration
+set.seed(123)
+data <- data.frame(
+  ISO_Code = sample(country_data$ISO_Code, size = 100, replace = TRUE),
+  Mortality = runif(100, min = 0, max = 100)
+)
+
+head(data)
+# Merge the world map data with the country ISO codes
+merged_world_data <- merge(world_data, country_data, by = "region", all.x = TRUE)
+
+# Merge the world map data with the mortality data using ISO codes
+merged_data <- merge(merged_world_data, data, by = "ISO_Code", all.x = TRUE)
+
+# Plot the map
+# Plot the map with a lighter color palette and more highlighted regions
+plot_10 <- ggplot(merged_data, aes(fill = Mortality, map_id = region)) +
+  geom_map(map = merged_data, aes(map_id = region), color = "white") +
+  expand_limits(x = merged_data$long, y = merged_data$lat) +
+  scale_fill_gradient(low = "green", high = "red", name = "Mortality", limits = c(0, 50)) +
+  labs(title = "Distribution of Mortality Among Regions and Countries",
+       caption = "Data source: Sample data") +
+  theme_void()
+
+ggsave(filename = "plot_10.png", plot = plot_10, width = 8, height = 6)
+```
+
 
 # Model-fitting
 
