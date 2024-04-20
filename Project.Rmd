@@ -686,6 +686,15 @@ predictions <- predict(model, newdata = test_data)
 rmse <- sqrt(mean((predictions - test_data$NumericValue)^2, na.rm = TRUE))
 print(paste("RMSE:", rmse))
 
+# Plotting Rate against Year
+ggplot(rs_246, aes(x = Year, y = NumericValue)) +
+  geom_point(aes(color = `Road User Type`), alpha = 0.5) +
+  geom_smooth(method = "lm", aes(color = `Road User Type`), se = FALSE) +
+  labs(title = "Rate Over Time by Road User Type",
+       x = "Year",
+       y = "NumericValue") +
+  theme_minimal()
+
 ```
 
 ```{r Predicting Death rate by using predictions as Year and genders from global data from rs_198}
@@ -770,11 +779,14 @@ The R-squared value of 0.3534 suggests that around 35% of the variability in the
 
 ### Plot Analysis
 
-**Rate Over Time by Sex:** The plot demonstrates the rates for males and females over time. The downward trend is consistent with the model's negative coefficient for `Year`.
+- **Residuals vs Fitted Plot**: The absence of distinct patterns suggests that the model's assumptions of linearity and homoscedasticity are reasonable. However, the constant spread across fitted values needs to be observed for any potential heteroscedasticity.
 
-**Comparison of Rate by Sex:** The boxplot clearly shows that males generally have higher rates than females, which is consistent with the coefficients in the model summary.
+- **Normal Q-Q Plot**: This plot is used to assess the normality of residuals. Deviations from the reference line at the extremes could indicate potential outliers or heavy tails in the distribution of residuals.
 
-**Residuals vs. Fitted Values:** The residuals plot does not display any obvious patterns, indicating that the model does not suffer from non-linearity. However, the spread of residuals seems consistent across the range of fitted values, suggesting homoscedasticity.
+- **Scale-Location Plot**: A horizontal scatter suggests that the variances are equal across the range of fitted values, which is desirable in a good model.
+
+- **Residuals vs Leverage Plot**: Points that stand out far from the rest of the data points might have high leverage and could unduly influence the model. Cook's distance lines help to identify influential cases that may merit further investigation.
+
 
 ### Conclusions
 
